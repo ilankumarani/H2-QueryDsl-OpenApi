@@ -38,6 +38,7 @@ public class OpenApiConfig {
         return GroupedOpenApi.builder()
                 .group("BLOG")
                 //.pathsToExclude("/api/v1/**", "/v1/**")
+                .addOpenApiCustomizer(openApiCustomizer)
                 .packagesToScan(blogPackagesToScan)
                 .pathsToMatch(ALL_PATTERN)
                 .build();
@@ -48,7 +49,6 @@ public class OpenApiConfig {
     public GroupedOpenApi ownerApis() {
         return GroupedOpenApi.builder()
                 .group("OWNER")
-                .addOpenApiCustomizer(openApiCustomizer)
                 .packagesToScan(ownerPackagesToScan)
                 .pathsToMatch(ALL_PATTERN)
                 .build();
