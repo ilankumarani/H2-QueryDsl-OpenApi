@@ -25,13 +25,10 @@ spring:
     jpa:
         database-platform: org.hibernate.dialect.H2Dialect
         hibernate:
-        # simplest way to dump the queries to standard out
-        #https://www.baeldung.com/sql-logging-spring-boot
-            show-sql: true
+            show-sql: true # simplest way to dump the queries to standard output console.(https://www.baeldung.com/sql-logging-spring-boot)
         properties:
             hibernate:
-                # To beautify or pretty print the SQL
-                format_sql: true
+                format_sql: true # To beautify or pretty print the SQL
                 show-sql: true
 
     h2:
