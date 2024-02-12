@@ -1,0 +1,50 @@
+logging:
+    level:
+        org:
+            hibernate:
+                SQL: DEBUG
+                stat: debug
+                SQL_SLOW: info
+                orm.jdbc.bind: TRACE #For prepared statements for JPA 6
+                orm.jdbc.extract: TRACE #For prepared statements for JPA 6
+                type.descriptor.sql.BasicBinder: TRACE #For prepared statements for JPA 5
+            # Logging SQL Statements with JdbcTemplate
+            springframework:
+                jdbc:
+                    core:
+                        JdbcTemplate: DEBUG
+                        StatementCreatorUtils: TRACE
+
+spring:
+    datasource:
+        driverClassName: org.h2.Driver
+        password: password
+        url: jdbc:h2:mem:testdb
+        username: sa
+    jpa:
+        database-platform: org.hibernate.dialect.H2Dialect
+        defer-datasource-initialization: false
+        hibernate:
+            ddl-auto: none
+        # simplest way to dump the queries to standard out
+        #https://www.baeldung.com/sql-logging-spring-boot
+            show-sql: true
+        properties:
+            hibernate:
+                # To beautify or pretty print the SQL
+                format_sql: true
+                show-sql: true
+
+    sql:
+        init:
+            mode: never
+            schema-locations:
+            data-locations:
+    h2:
+        console:
+            enabled: true
+            settings:
+                web-allow-others: true
+                trace: true
+
+
