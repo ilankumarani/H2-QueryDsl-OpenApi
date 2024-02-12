@@ -1,7 +1,4 @@
 spring:
-  config:
-    activate:
-      on-profile: "none"
   jpa:
     defer-datasource-initialization: true
     hibernate:
