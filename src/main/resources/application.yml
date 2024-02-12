@@ -38,3 +38,15 @@ spring:
                 web-allow-others: true
                 trace: true
 
+
+springdoc:
+    swagger-ui:
+        path: '/swagger-ui.html'
+    api-docs:
+        path: '/api-docs'
+    show-actuator: true
+    use-management-port: true
+
+management:
+    endpoints.web.exposure.include: openapi, swagger-ui
+
