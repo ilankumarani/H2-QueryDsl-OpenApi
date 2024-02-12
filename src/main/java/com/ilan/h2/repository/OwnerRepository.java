@@ -1,18 +1,17 @@
 package com.ilan.h2.repository;
 
-
 import com.ilan.h2.entity.Owner;
 import com.ilan.h2.entity.QBlog;
 import com.ilan.h2.entity.QOwner;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Repository
-public class BlogRepository {
+@Service
+public class OwnerRepository {
 
     @PersistenceContext
     private EntityManager entityManager;

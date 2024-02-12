@@ -44,9 +44,12 @@ springdoc:
         path: '/swagger-ui.html'
     api-docs:
         path: '/api-docs'
-    show-actuator: true
-    use-management-port: true
 
 management:
     endpoints.web.exposure.include: openapi, swagger-ui
+
+bezkoder:
+    openapi:
+        dev-url: 'http://localhost:8080'
+        prod-url: 'https://bezkoder-api.com'
 
