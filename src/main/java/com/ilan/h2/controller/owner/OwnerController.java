@@ -1,4 +1,4 @@
-package com.ilan.h2.controller;
+package com.ilan.h2.controller.owner;
 
 import com.ilan.h2.entity.Owner;
 import com.ilan.h2.repository.OwnerRepository;

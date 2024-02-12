@@ -40,6 +40,8 @@ spring:
 
 
 springdoc:
+    security:
+        enabled: false
     swagger-ui:
         path: '/swagger-ui.html'
     api-docs:

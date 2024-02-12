@@ -1,8 +1,13 @@
 package com.ilan.h2.config;
 
+import io.swagger.v3.oas.models.Components;
+import io.swagger.v3.oas.models.security.SecurityRequirement;
+import io.swagger.v3.oas.models.security.SecurityScheme;
 import org.springdoc.core.models.GroupedOpenApi;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;
 
 import io.swagger.v3.oas.models.OpenAPI;
@@ -11,6 +16,7 @@ import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.info.License;
 import io.swagger.v3.oas.models.servers.Server;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.springdoc.core.utils.Constants.ALL_PATTERN;
@@ -24,35 +30,56 @@ public class OpenApiConfig {
     @Value("${bezkoder.openapi.prod-url}")
     private String prodUrl;
 
-    String[] packagesToScan = {"com.ilan.h2.controller"};
+    String[] blogPackagesToScan = {"com.ilan.h2.controller.blog"};
+
     @Bean
-    public GroupedOpenApi adminApi() {
+    public GroupedOpenApi blogApis() {
         return GroupedOpenApi.builder()
-                .group("OWNER")
+                .group("BLOG")
                 //.pathsToExclude("/api/v1/**", "/v1/**")
-                .packagesToScan(packagesToScan)
+                .packagesToScan(blogPackagesToScan)
                 .pathsToMatch(ALL_PATTERN)
                 .build();
     }
 
+    String[] ownerPackagesToScan = {"com.ilan.h2.controller.owner"};
+    @Bean
+    public GroupedOpenApi ownerApis() {
+        return GroupedOpenApi.builder()
+                .group("OWNER")
+                //.pathsToExclude("/api/v1/**", "/v1/**")
+                .packagesToScan(ownerPackagesToScan)
+                .pathsToMatch(ALL_PATTERN)
+                .build();
+    }
 
+    @ConditionalOnProperty(prefix = "springdoc", name = "security.enabled", havingValue= "true", matchIfMissing = false)
+    @Bean
+    public OpenAPI customizeOpenAPI() {
+        final String securitySchemeName = "bearerAuth";
+        return new OpenAPI()
+                .servers(getServers())
+                .addSecurityItem(new SecurityRequirement()
+                        .addList(securitySchemeName))
+                .components(new Components()
+                        .addSecuritySchemes(securitySchemeName, new SecurityScheme()
+                                .name(securitySchemeName)
+                                .in(SecurityScheme.In.HEADER)
+                                .type(SecurityScheme.Type.HTTP)
+                                .scheme("bearer")
+                                .bearerFormat("JWT")));
+    }
+
+
+    @ConditionalOnProperty(prefix = "springdoc", name = "security.enabled", havingValue= "false", matchIfMissing = false)
     @Bean
     public OpenAPI myOpenAPI() {
-        Server devServer = new Server();
-        devServer.setUrl(devUrl);
-        devServer.setDescription("Server URL in Development environment");
-
-        Server prodServer = new Server();
-        prodServer.setUrl(prodUrl);
-        prodServer.setDescription("Server URL in Production environment");
-
         return new OpenAPI()
                 .info(this.getInfo())
-                .servers(List.of(devServer, prodServer));
+                .servers(getServers());
     }
 
     private Info getInfo() {
-
         return new Info()
                 .title("Tutorial Management API")
                 .version("1.0")
@@ -72,5 +99,17 @@ public class OpenApiConfig {
         return new License()
                 .name("MIT License")
                 .url("https://choosealicense.com/licenses/mit/");
+    }
+
+    public List<Server> getServers(){
+        Server devServer = new Server();
+        devServer.setUrl(devUrl);
+        devServer.setDescription("Server URL in Development environment");
+
+        Server prodServer = new Server();
+        prodServer.setUrl(prodUrl);
+        prodServer.setDescription("Server URL in Production environment");
+
+        return List.of(devServer, prodServer);
     }
 }
