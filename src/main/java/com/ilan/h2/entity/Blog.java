@@ -2,7 +2,7 @@ package com.ilan.h2.entity;
 
 import jakarta.persistence.*;
 @Entity
-@Table(name = "BLOG_DETAILS")
+@Table(name = "BLOG_DETAILS", schema = "BLOG_SCHEMA")
 public class Blog {
 
     @Id
