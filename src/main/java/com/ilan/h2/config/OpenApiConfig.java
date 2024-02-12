@@ -3,6 +3,7 @@ package com.ilan.h2.config;
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.security.SecurityRequirement;
 import io.swagger.v3.oas.models.security.SecurityScheme;
+import org.springdoc.core.customizers.OpenApiCustomizer;
 import org.springdoc.core.models.GroupedOpenApi;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -47,11 +48,30 @@ public class OpenApiConfig {
     public GroupedOpenApi ownerApis() {
         return GroupedOpenApi.builder()
                 .group("OWNER")
-                //.pathsToExclude("/api/v1/**", "/v1/**")
+                .addOpenApiCustomizer(openApiCustomizer)
                 .packagesToScan(ownerPackagesToScan)
                 .pathsToMatch(ALL_PATTERN)
                 .build();
     }
+
+
+    OpenApiCustomizer openApiCustomizer = openAPI ->{
+        final String securitySchemeName = "bearerAuth";
+        openAPI
+                .servers(getServers())
+                .addSecurityItem(new SecurityRequirement()
+                        .addList(securitySchemeName))
+                .components(new Components()
+                        .addSecuritySchemes(securitySchemeName, new SecurityScheme()
+                                .name(securitySchemeName)
+                                .in(SecurityScheme.In.HEADER)
+                                .type(SecurityScheme.Type.HTTP)
+                                .scheme("bearer")
+                                .bearerFormat("JWT")))
+                .info(getInfo());
+
+    };
+
 
     @ConditionalOnProperty(prefix = "springdoc", name = "security.enabled", havingValue= "true", matchIfMissing = false)
     @Bean
