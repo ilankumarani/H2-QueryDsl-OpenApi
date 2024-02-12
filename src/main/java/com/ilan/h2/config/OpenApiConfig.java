@@ -101,7 +101,8 @@ public class OpenApiConfig {
                 .title("Tutorial Management API")
                 .version("1.0")
                 .contact(this.getContact())
-                .description("This API exposes endpoints to manage tutorials.").termsOfService("https://www.bezkoder.com/terms")
+                .description("This API exposes endpoints to manage tutorials.")
+                .termsOfService("https://www.bezkoder.com/terms")
                 .license(this.getLicense());
     }
 
