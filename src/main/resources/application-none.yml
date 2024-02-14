@@ -6,5 +6,5 @@ spring:
   sql:
     init:
       mode: always
-      schema-locations: classpath:scripts/schema.sql, classpath*:scripts/ddl.sql
-      data-locations: classpath*:scripts/data*.sql
+      schema-locations: classpath:h2/schema.sql, classpath*:h2/ddl.sql
+      data-locations: classpath*:h2/data*.sql

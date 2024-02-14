@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb;MODE=Oracle;INIT=RUNSCRIPT FROM 'classpath:h2/schema.sql'
+  jpa:
+    database-platform: org.hibernate.dialect.OracleDialect
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: none
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:h2/schema.sql, classpath*:oracle/ddl.sql
+      data-locations: classpath*:h2/data*.sql
