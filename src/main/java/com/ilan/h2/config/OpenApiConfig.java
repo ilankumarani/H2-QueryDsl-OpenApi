@@ -35,7 +35,7 @@ public class OpenApiConfig {
         return GroupedOpenApi.builder()
                 .group("BLOG")
                 //.pathsToExclude("/api/v1/**", "/v1/**")
-                .addOpenApiCustomizer(openApiCustomizer)
+                //.addOpenApiCustomizer(openApiCustomizer)
                 .packagesToScan(blogPackagesToScan)
                 .pathsToMatch(ALL_PATTERN)
                 .build();
