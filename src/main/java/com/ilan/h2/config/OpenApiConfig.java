@@ -130,7 +130,7 @@ public class OpenApiConfig {
                 .map(entrySet-> {
             Server server = new Server();
             server.setUrl(entrySet.getValue());
-            server.setDescription(String.format("Server URL in {} environment", entrySet.getKey()));
+            server.setDescription(String.format("Server URL in %s environment", entrySet.getKey()));
             return server;
         }).collect(Collectors.toList());
     }
