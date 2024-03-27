@@ -8,25 +8,28 @@ import io.swagger.v3.oas.models.info.License;
 import io.swagger.v3.oas.models.security.SecurityRequirement;
 import io.swagger.v3.oas.models.security.SecurityScheme;
 import io.swagger.v3.oas.models.servers.Server;
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
 import org.springdoc.core.customizers.OpenApiCustomizer;
 import org.springdoc.core.models.GroupedOpenApi;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import static org.springdoc.core.utils.Constants.ALL_PATTERN;
 
 @Configuration
+@RequiredArgsConstructor
 public class OpenApiConfig {
 
-    @Value("${bezkoder.openapi.dev-url}")
-    private String devUrl;
-
-    @Value("${bezkoder.openapi.prod-url}")
-    private String prodUrl;
+    private final SpringDocUrl springDocUrl;
 
     String[] blogPackagesToScan = {"com.ilan.h2.controller.blog"};
 
@@ -120,14 +123,25 @@ public class OpenApiConfig {
     }
 
     public List<Server> getServers(){
-        Server devServer = new Server();
-        devServer.setUrl(devUrl);
-        devServer.setDescription("Server URL in Development environment");
-
-        Server prodServer = new Server();
-        prodServer.setUrl(prodUrl);
-        prodServer.setDescription("Server URL in Production environment");
-
-        return List.of(devServer, prodServer);
+        return springDocUrl
+                .getBaseUrl()
+                .entrySet()
+                .stream()
+                .map(entrySet-> {
+            Server server = new Server();
+            server.setUrl(entrySet.getValue());
+            server.setDescription(String.format("Server URL in {} environment", entrySet.getKey()));
+            return server;
+        }).collect(Collectors.toList());
     }
+
+
+}
+
+
+@Configuration
+@ConfigurationProperties("springdoc")
+@Data
+class SpringDocUrl {
+    private final Map<String, String> baseUrl = new HashMap<>();
 }
