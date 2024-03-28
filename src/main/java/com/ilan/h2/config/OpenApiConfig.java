@@ -31,30 +31,32 @@ public class OpenApiConfig {
     private final SpringDocUrl springDocUrl;
 
     String[] blogPackagesToScan = {"com.ilan.h2.controller.blog"};
+    String[] ownerPackagesToScan = {"com.ilan.h2.controller.owner"};
 
     @Bean
     public GroupedOpenApi blogApis() {
         return GroupedOpenApi.builder()
                 .group("BLOG")
                 //.pathsToExclude("/api/v1/**", "/v1/**")
-                //.addOpenApiCustomizer(openApiCustomizer)
                 .packagesToScan(blogPackagesToScan)
                 .pathsToMatch(ALL_PATTERN)
                 .build();
     }
 
-    String[] ownerPackagesToScan = {"com.ilan.h2.controller.owner"};
+
+    //Here we are authenticating for OWNER group
     @Bean
     public GroupedOpenApi ownerApis() {
         return GroupedOpenApi.builder()
                 .group("OWNER")
+                .addOpenApiCustomizer(openApiCustomizer)
                 .packagesToScan(ownerPackagesToScan)
                 .pathsToMatch(ALL_PATTERN)
                 .build();
     }
 
 
-    OpenApiCustomizer openApiCustomizer = openAPI ->{
+    OpenApiCustomizer openApiCustomizer = openAPI -> {
         final String securitySchemeName = "bearerAuth";
         openAPI
                 .servers(getServers())
@@ -72,7 +74,7 @@ public class OpenApiConfig {
     };
 
 
-    @ConditionalOnProperty(prefix = "springdoc", name = "security.enabled", havingValue= "true", matchIfMissing = false)
+    @ConditionalOnProperty(prefix = "springdoc", name = "security.enabled", havingValue = "true", matchIfMissing = true)
     @Bean
     public OpenAPI customizeOpenAPI() {
         final String securitySchemeName = "bearerAuth";
@@ -90,7 +92,7 @@ public class OpenApiConfig {
     }
 
 
-    @ConditionalOnProperty(prefix = "springdoc", name = "security.enabled", havingValue= "false", matchIfMissing = false)
+    @ConditionalOnProperty(prefix = "springdoc", name = "security.enabled", havingValue = "false", matchIfMissing = true)
     @Bean
     public OpenAPI myOpenAPI() {
         return new OpenAPI()
@@ -100,38 +102,38 @@ public class OpenApiConfig {
 
     private Info getInfo() {
         return new Info()
-                .title("Tutorial Management API")
+                .title("Blog Owner Management API")
                 .version("1.0")
                 .contact(this.getContact())
                 .description("This API exposes endpoints to manage tutorials.")
-                .termsOfService("https://www.bezkoder.com/terms")
+                .termsOfService("https://www.google.com/terms")
                 .license(this.getLicense());
     }
 
     private Contact getContact() {
         return new Contact()
-                .email("bezkoder@gmail.com")
-                .name("BezKoder")
-                .url("https://www.bezkoder.com");
+                .email("ilankumaran@gmail.com")
+                .name("ILANKUMARAN ILANGOVAN")
+                .url("https://www.google.com");
     }
 
     private License getLicense() {
         return new License()
-                .name("MIT License")
+                .name("ILAN License")
                 .url("https://choosealicense.com/licenses/mit/");
     }
 
-    public List<Server> getServers(){
+    public List<Server> getServers() {
         return springDocUrl
                 .getBaseUrl()
                 .entrySet()
                 .stream()
-                .map(entrySet-> {
-            Server server = new Server();
-            server.setUrl(entrySet.getValue());
-            server.setDescription(String.format("Server URL in %s environment", entrySet.getKey()));
-            return server;
-        }).collect(Collectors.toList());
+                .map(entrySet -> {
+                    Server server = new Server();
+                    server.setUrl(entrySet.getValue());
+                    server.setDescription(String.format("%s environment Base URL", entrySet.getKey()));
+                    return server;
+                }).collect(Collectors.toList());
     }
 
 
