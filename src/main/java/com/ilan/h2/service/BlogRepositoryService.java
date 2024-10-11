@@ -1,7 +1,6 @@
 package com.ilan.h2.service;
 
 import com.ilan.h2.entity.Blog;
-import com.ilan.h2.entity.QBlog;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
