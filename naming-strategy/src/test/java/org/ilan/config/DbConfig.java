@@ -26,7 +26,7 @@ import javax.sql.DataSource;
         transactionManagerRef = DbConfig.TRANSACTION_MANAGER,
         basePackages = "org.ilan.repository"
 )
-@ConditionalOnProperty(value = "with", havingValue = "true")
+@ConditionalOnProperty(value = "withEntityManager", havingValue = "true")
 @Slf4j
 public class DbConfig {
 

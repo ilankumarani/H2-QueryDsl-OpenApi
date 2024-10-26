@@ -16,7 +16,7 @@ import static org.ilan.constant.NamingStrategyConstant.PHYSICAL_NAMING_STRATEGY_
 import static org.ilan.constant.NamingStrategyConstant.SPRING_PHYSICAL_NAMING_STRATEGY;
 
 @Slf4j
-@Description("Class for resolving jpa naming strategy when spring creates entity manager and datasource (3) ")
+@Description("Class for resolving jpa naming strategy when spring creates entityManager and Datasource (3) ")
 public class SpringHibernatePropertiesRegister implements ApplicationListener<ApplicationEnvironmentPreparedEvent> {
 
 

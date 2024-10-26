@@ -29,7 +29,7 @@ import static org.ilan.constant.NamingStrategyConstant.PHYSICAL_NAMING_STRATEGY_
 @Configuration
 @DependsOn(StringValueResolverProvider.BEAN_NAME)
 @ConditionalOnProperty(name = PHYSICAL_NAMING_STRATEGY_ENABLED, havingValue = "true", matchIfMissing = true)
-@Description("Class for resolving jpa naming strategy when user supplies their own instance of entity manager")
+@Description("Class for resolving jpa naming strategy when user creates Bean of entityManager")
 public class HibernatePropertiesRegister {
 
     /*
