@@ -1,7 +1,7 @@
 package org.ilan.config;
 
 
-import org.ilan.strategy.CustomPhysicalNamingStrategy;
+import org.ilan.namingStrategy.CustomPhysicalNamingStrategy;
 import org.springframework.boot.context.event.ApplicationEnvironmentPreparedEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.Description;

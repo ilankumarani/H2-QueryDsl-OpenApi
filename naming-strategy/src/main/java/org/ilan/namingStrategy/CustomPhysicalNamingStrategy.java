@@ -1,4 +1,4 @@
-package org.ilan.strategy;
+package org.ilan.namingStrategy;
 
 
 import org.hibernate.boot.model.naming.Identifier;

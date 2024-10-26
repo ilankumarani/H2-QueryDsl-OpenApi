@@ -3,7 +3,7 @@ package org.ilan.config;
 
 import lombok.NoArgsConstructor;
 import org.ilan.provider.StringValueResolverProvider;
-import org.ilan.strategy.CustomPhysicalNamingStrategy;
+import org.ilan.namingStrategy.CustomPhysicalNamingStrategy;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.orm.jpa.EntityManagerFactoryBuilderCustomizer;

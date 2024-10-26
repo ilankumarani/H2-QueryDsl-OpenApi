@@ -1,0 +1,23 @@
+tableName:
+  employee: EMPLOYEE_TABLE
+
+schemaName:
+  employee: EMP_SCHEMA
+
+catalogName:
+  employee: testDb
+
+spring:
+  datasource:
+    driverClassName: org.h2.Driver
+    username: sa
+    password: password
+    url: jdbc:h2:mem:testDb;RUNSCRIPT FROM 'classpath:sql/schema.sql'
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      show-sql: true # simplest way to dump the queries to standard output console.(https://www.baeldung.com/sql-logging-spring-boot)
+    properties:
+      hibernate:
+        format_sql: true # To beautify or pretty print the SQL
+        show-sql: true
