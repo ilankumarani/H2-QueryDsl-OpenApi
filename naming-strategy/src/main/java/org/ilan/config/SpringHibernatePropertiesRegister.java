@@ -29,10 +29,7 @@ public class SpringHibernatePropertiesRegister implements ApplicationListener<Ap
         //Flag provide but empty value
         //Flag provide but value with space
         //Flag provide and the value is TRUE
-        if (Objects.isNull(isEnabled) || isEnabled.isEmpty()
-                || (Objects.nonNull(isEnabled) && isEnabled.trim().isEmpty())
-                || (Objects.nonNull(isEnabled) && !isEnabled.trim().isEmpty()
-                && Boolean.valueOf(isEnabled.trim()) == Boolean.TRUE)) {
+        if (Objects.isNull(isEnabled) || isEnabled.isEmpty() || (Objects.nonNull(isEnabled) && isEnabled.trim().isEmpty()) || (Objects.nonNull(isEnabled) && !isEnabled.trim().isEmpty() && Boolean.valueOf(isEnabled.trim()) == Boolean.TRUE)) {
             Properties props = new Properties();
             props.put(SPRING_PHYSICAL_NAMING_STRATEGY, CustomPhysicalNamingStrategy.CLASS_NAME);
             final String NAMING_STRATEGY_PROPERTY = "physicalNamingProperty";
