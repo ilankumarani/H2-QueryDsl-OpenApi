@@ -14,9 +14,10 @@ import org.springframework.context.annotation.Bean;
 public class H2Application {
 
     private final BlogRepository blogRepository;
-	private final OwnerRepository ownerRepository;
+    private final OwnerRepository ownerRepository;
 
     public static void main(String[] args) {
+
         SpringApplication.run(H2Application.class, args);
     }
 
@@ -25,7 +26,7 @@ public class H2Application {
     public CommandLineRunner startup() {
         return args -> {
             blogRepository.save(Blog.builder().title("ALPHA").category("Weather")
-					.category("SNOW").build());
+                    .category("SNOW").build());
         };
     }
 }
