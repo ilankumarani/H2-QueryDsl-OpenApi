@@ -1,11 +1,16 @@
-tableName:
-  employee: EMPLOYEE_TABLE
+
+catalogName:
+  employee: testDb
 
 schemaName:
   employee: EMP_SCHEMA
 
-catalogName:
-  employee: testDb
+tableName:
+  employee: EMPLOYEE_TABLE
+
+column:
+  employee:
+    name: FULL_NAME
 
 spring:
   datasource:
