@@ -1,4 +1,4 @@
-package org.ilan;
+package org.test;
 
 
 import org.hibernate.Session;
@@ -8,21 +8,10 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.ilan.entity.Employee;
-import org.ilan.namingStrategy.CustomPhysicalNamingStrategy;
 import org.ilan.provider.StringValueResolverProvider;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.config.ConfigurableBeanFactory;
-import org.springframework.beans.factory.config.EmbeddedValueResolver;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
-import org.springframework.util.StringValueResolver;
 
-import java.io.IOException;
-import java.util.Enumeration;
-import java.util.Properties;
-
-import static org.hibernate.cfg.AvailableSettings.PHYSICAL_NAMING_STRATEGY;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class NamingStrategyTest extends NamingStrategyBase {

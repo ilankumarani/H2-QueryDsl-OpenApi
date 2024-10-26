@@ -1,4 +1,4 @@
-package org.ilan;
+package org.test;
 
 import org.ilan.namingStrategy.CustomPhysicalNamingStrategy;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
