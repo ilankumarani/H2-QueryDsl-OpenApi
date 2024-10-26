@@ -2,6 +2,7 @@ package org.ilan.config;
 
 
 import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.ilan.provider.StringValueResolverProvider;
 import org.ilan.namingStrategy.CustomPhysicalNamingStrategy;
 import org.springframework.beans.factory.ObjectProvider;
@@ -20,11 +21,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static org.hibernate.cfg.AvailableSettings.PHYSICAL_NAMING_STRATEGY;
+import static org.ilan.constant.NamingStrategyConstant.PHYSICAL_NAMING_STRATEGY_ENABLED;
 
+
+@Slf4j
 @NoArgsConstructor
 @Configuration
 @DependsOn(StringValueResolverProvider.BEAN_NAME)
-@ConditionalOnProperty(name = "physical_naming_strategy.enabled", havingValue = "true", matchIfMissing = true)
+@ConditionalOnProperty(name = PHYSICAL_NAMING_STRATEGY_ENABLED, havingValue = "true", matchIfMissing = true)
 @Description("Class for resolving jpa naming strategy when user supplies their own instance of entity manager")
 public class HibernatePropertiesRegister {
 
@@ -42,6 +46,8 @@ public class HibernatePropertiesRegister {
         customizers.orderedStream().forEach((customizer) -> {
             customizer.customize(builder);
         });
+
+        log.info("CustomPhysicalNamingStrategy is set to EntityManagerFactoryBuilder");
         return builder;
 
     }

@@ -1,4 +1,4 @@
-package org.test;
+package org.test.unitTest;
 
 
 import org.hibernate.Session;

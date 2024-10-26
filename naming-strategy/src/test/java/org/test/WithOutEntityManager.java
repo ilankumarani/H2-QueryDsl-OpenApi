@@ -8,13 +8,12 @@ import org.springframework.context.annotation.Import;
 
 @SpringBootTest(useMainMethod = SpringBootTest.UseMainMethod.WHEN_AVAILABLE
         , classes = {ApplicationMain.class, DbConfig.class}
-        , properties = {"with=true"}
+        , properties = {"with=false"}
 )
-@Import({DbConfig.class})
-public class WithEntityManager {
+public class WithOutEntityManager {
 
     @Test
-    public void test() {
+    public void test(){
 
     }
 }
