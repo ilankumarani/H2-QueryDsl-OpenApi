@@ -23,13 +23,15 @@ import java.util.Enumeration;
 import java.util.Properties;
 
 import static org.hibernate.cfg.AvailableSettings.PHYSICAL_NAMING_STRATEGY;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class NamingStrategyTest {
+public class NamingStrategyTest extends NamingStrategyBase {
 
     private Session session;
 
     @BeforeEach
     public void init() {
+        Class<?>[] classes = {Employee.class};
         StringValueResolverProvider stringValueResolverProvider = new StringValueResolverProvider();
         stringValueResolverProvider.setEmbeddedValueResolver(getValueResolver());
         Configuration configuration = new Configuration();
@@ -37,7 +39,7 @@ public class NamingStrategyTest {
         ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties())
                 .build();
         MetadataSources metadataSources = new MetadataSources(serviceRegistry);
-        metadataSources.addAnnotatedClass(Employee.class);
+        metadataSources.addAnnotatedClasses(classes);
         SessionFactory factory = metadataSources.buildMetadata()
                 .buildSessionFactory();
         session = factory.openSession();
@@ -51,51 +53,20 @@ public class NamingStrategyTest {
         session.flush();
         session.clear();
 
-
-    }
-
-    private EmbeddedValueResolver getValueResolver() {
         String catalogProperty = "catalogName.employee";
         String schemaProperty = "schemaName.employee";
         String tableProperty = "tableName.employee";
         String columnProperty = "column.employee.name";
 
+        String employeeName = (String) session.createNativeQuery("SELECT "
+                + getProperties().getProperty(columnProperty)
+                + " FROM "
+                + getProperties().getProperty(schemaProperty)
+                + "."
+                + getProperties().getProperty(tableProperty)
+                + " WHERE ID=1").getSingleResult();
 
-        Properties properties = getProperties();
-        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
-        ConfigurableBeanFactory beanFactory = ctx.getBeanFactory();
-        PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer = new PropertySourcesPlaceholderConfigurer();
-        propertySourcesPlaceholderConfigurer.setProperties(properties);
-        beanFactory.registerSingleton(PropertySourcesPlaceholderConfigurer.class.getSimpleName(), propertySourcesPlaceholderConfigurer);
-        beanFactory.addEmbeddedValueResolver(new StringValueResolver() {
-            @Override
-            public String resolveStringValue(String identifierText) {
-                String value = null;
-                Enumeration e = properties.propertyNames();
-                while (e.hasMoreElements()) {
-                    String key = e.nextElement().toString();
-                    if (identifierText.contains(key) && identifierText.startsWith("${") && identifierText.endsWith("}")) {
-                        System.out.println(key + "  " + identifierText.contains(key) + "  " + properties.get(key).toString());
-                        value = identifierText.contains(key) ? properties.get(key).toString() : null;
-                    }
-                }
-                return value;
-            }
-        });
-        EmbeddedValueResolver embeddedValueResolver = new EmbeddedValueResolver(beanFactory);
-        return embeddedValueResolver;
+        assertEquals(employee.getName(), employeeName);
     }
 
-    private Properties getProperties() {
-        Properties properties = new Properties();
-        try {
-            properties.load(Thread.currentThread()
-                    .getContextClassLoader()
-                    .getResourceAsStream("application-strategy.properties"));
-            properties.put(PHYSICAL_NAMING_STRATEGY, CustomPhysicalNamingStrategy.CLASS_NAME);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        return properties;
-    }
 }
