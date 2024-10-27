@@ -5,6 +5,7 @@ import com.ilan.h2.entity.Owner;
 import com.ilan.h2.repository.BlogRepository;
 import com.ilan.h2.repository.OwnerRepository;
 import lombok.RequiredArgsConstructor;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -12,6 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.assertj.core.api.FactoryBasedNavigableListAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -48,7 +50,10 @@ public class OwnerServiceTest {
         Owner ownerSaved = ownerRepository.save(owner);
         Blog blogSaved = blogRepository.save(blog);
 
-        //assertEquals(ownerSaved, ownerRepositoryService.findOwnerByName(ownerSaved.getName()).stream().findFirst().get(), "Record found for JpaRepository");
-        //assertEquals(ownerSaved, ownerRepositoryService.findOwnerByNameAndTitle(ownerSaved.getName(), blog.getTitle()).stream().findFirst().get(), "Record found for JpaRepository");
+       /* assertTrue(ownerSaved.equals(ownerRepositoryService.findOwnerByName(ownerSaved.getName()).stream().findFirst().get()));
+
+        Assertions.assertThat(ownerSaved).isEqualToComparingFieldByFieldRecursively(ownerRepositoryService.findOwnerByName(ownerSaved.getName()).stream().findFirst().get());
+        assertEquals(ownerSaved, ownerRepositoryService.findOwnerByName(ownerSaved.getName()).stream().findFirst().get(), "Record found for NOT JpaRepository");
+        assertEquals(ownerSaved, ownerRepositoryService.findOwnerByNameAndTitle(ownerSaved.getName(), blog.getTitle()).stream().findFirst().get(), "Record found for NOT JpaRepository");*/
     }
 }

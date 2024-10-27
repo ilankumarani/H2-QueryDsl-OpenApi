@@ -17,17 +17,17 @@ public class BlogController {
     private final BlogRepositoryService blogRepository;
 
     @GetMapping(value = "/findBlogByTitle/{title}")
-    public List<Blog> findBlogByTitle(@Parameter(description = "titleName", required = true, example="ALPHA") @PathVariable(value = "title") String title) {
+    public List<Blog> findBlogByTitle(@Parameter(description = "titleName", required = true, example="Too much Snow") @PathVariable(value = "title") String title) {
         return blogRepository.findBlogByTitle(title);
     }
 
     @GetMapping(value = "/jdbcTemplate/findBlogByTitle/{title}")
-    public List<Blog> jdbcTemplate(@Parameter(description = "titleName", required = true, example="ALPHA") @PathVariable(value = "title") String title) {
+    public List<Blog> jdbcTemplate(@Parameter(description = "titleName", required = true, example="Too much Snow") @PathVariable(value = "title") String title) {
         return blogRepository.findBlogByTitleJdbcTemplate(title);
     }
 
     @GetMapping(value = "/namedJdbcTemplate/findBlogByTitle/{title}")
-    public List<Blog> namedJdbcTemplate(@Parameter(description = "titleName", required = true, example="ALPHA") @PathVariable(value = "title") String title) {
+    public List<Blog> namedJdbcTemplate(@Parameter(description = "titleName", required = true, example="Too much Snow") @PathVariable(value = "title") String title) {
         return blogRepository.findBlogByTitleNamedParameterJdbcTemplate(title);
     }
 }

@@ -13,17 +13,17 @@ public class DataLoad {
     public static void insertData(OwnerRepository ownerRepository, BlogRepository blogRepository){
         Owner owner = Owner.builder()
                 .email("ilankumaran.i@gmail.com")
-                .name("Ilankumaran Ilangovan")
+                .name("Ilankumaran")
                 .build();
 
         Blog blog = Blog.builder()
-                .title("Too much Snow")
+                .title("Snow")
                 .category("Weather")
                 .owner(owner)
                 .content("SNOW").build();
 
         Blog blog1 = Blog.builder()
-                .title("Too much Rain")
+                .title("Rain")
                 .category("Weather")
                 .owner(owner)
                 .content("RAIN").build();

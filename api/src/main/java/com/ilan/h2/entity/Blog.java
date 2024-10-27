@@ -32,7 +32,7 @@ public class Blog {
 
     @JsonBackReference
     @ToString.Exclude
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "owner_id")
     private Owner owner;
 

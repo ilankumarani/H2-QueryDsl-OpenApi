@@ -4,6 +4,7 @@ import com.ilan.h2.entity.Blog;
 import com.ilan.h2.entity.Owner;
 import com.ilan.h2.repository.BlogRepository;
 import com.ilan.h2.repository.OwnerRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,8 +55,8 @@ public class BlogServiceTest {
         List<Blog> f3 = blogRepositoryService.findBlogByTitleNamedParameterJdbcTemplate(blogSaved.getTitle());
 
 
-       /* assertTrue(f1.contains(blogSaved), "Record found for JpaRepository");
-        assertTrue(f2.contains(blogSaved), "Record found for JdbcTemplate");
-        assertTrue(f3.contains(blogSaved), "Record found for NamedParameterJdbcTemplate");*/
+        /*assertTrue(f1.contains(blogSaved), "Record not found for JpaRepository");
+        assertTrue(f2.contains(blogSaved), "Record not found for JdbcTemplate");
+        assertTrue(f3.contains(blogSaved), "Record not found for NamedParameterJdbcTemplate");*/
     }
 }
