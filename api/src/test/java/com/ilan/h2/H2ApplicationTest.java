@@ -10,8 +10,7 @@ import org.springframework.context.ApplicationContext;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringBootTest(useMainMethod = SpringBootTest.UseMainMethod.ALWAYS
-, webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT
-, properties = {"server.port=8090"})
+, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @RequiredArgsConstructor(onConstructor_ = @__(@Autowired))
 public class H2ApplicationTest {
 
