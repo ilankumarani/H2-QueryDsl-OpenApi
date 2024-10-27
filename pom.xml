@@ -202,31 +202,38 @@
                                 <!-- source output directory -->
                                 <outputDirectory>${project.build.directory}/generated-sources</outputDirectory>
                                 <processors>
+                                    <processor>lombok.launch.AnnotationProcessorHider$AnnotationProcessor</processor>
                                     <processor>org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor</processor>
                                 </processors>
                             </configuration>
                         </execution>
-                        <!--<execution>
+                        <execution>
                             <id>_Qgenerate-test-entities</id>
                             <goals>
                                 <goal>process-test</goal>
                             </goals>
                             <phase>generate-test-sources</phase>
                             <configuration>
-                                &lt;!&ndash; source output directory &ndash;&gt;
+                                <!-- source output directory -->
                                 <outputDirectory>${project.build.directory}/generated-test-sources
                                 </outputDirectory>
                                 <processors>
+                                    <processor>lombok.launch.AnnotationProcessorHider$AnnotationProcessor</processor>
                                     <processor>org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor</processor>
                                 </processors>
                             </configuration>
-                        </execution>-->
+                        </execution>
                     </executions>
                     <dependencies>
                         <dependency>
                             <groupId>org.hibernate.orm</groupId>
                             <artifactId>hibernate-jpamodelgen</artifactId>
                             <version>${hibernate.version}</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>${lombok.version}</version>
                         </dependency>
                     </dependencies>
                 </plugin>
