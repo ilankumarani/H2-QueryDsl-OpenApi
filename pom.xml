@@ -21,6 +21,7 @@
     <properties>
         <java.version>21</java.version>
 
+        <mapstruct-processor>1.6.2</mapstruct-processor>
         <springdoc.version>2.4.0</springdoc.version>
         <querydsl.version>5.1.0</querydsl.version>
         <mysql-connector-java.version>8.0.33</mysql-connector-java.version>
@@ -51,6 +52,13 @@
             <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-processor</artifactId>
+            <version>${mapstruct-processor}</version>
+        </dependency>
+
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -286,11 +294,22 @@
                     <configuration>
                         <source>${java.version}</source>
                         <target>${java.version}</target>
+
+                        <annotationProcessors>
+                            <annotationProcessor>lombok.launch.AnnotationProcessorHider$AnnotationProcessor</annotationProcessor>
+                            <annotationProcessor>org.mapstruct.ap.MappingProcessor</annotationProcessor>
+                        </annotationProcessors>
+
                         <annotationProcessorPaths>
                             <path>
                                 <groupId>org.projectlombok</groupId>
                                 <artifactId>lombok</artifactId>
                                 <version>${lombok.version}</version>
+                            </path>
+                            <path>
+                                <groupId>org.mapstruct</groupId>
+                                <artifactId>mapstruct-processor</artifactId>
+                                <version>${mapstruct-processor}</version>
                             </path>
                         </annotationProcessorPaths>
                     </configuration>
