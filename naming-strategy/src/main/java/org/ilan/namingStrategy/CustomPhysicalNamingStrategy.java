@@ -31,8 +31,8 @@ public class CustomPhysicalNamingStrategy extends PhysicalNamingStrategyStandard
         if (identifier != null) {
             String identifierText = identifier.getText();
             if (isSpelExpression(identifierText)) {
-                String catalog = resolveSpelExpression(identifierText, "Sequence");
-                return super.toPhysicalSequenceName(preserveIdentifier(catalog), jdbcEnvironment);
+                String sequence = resolveSpelExpression(identifierText, "Sequence");
+                return super.toPhysicalSequenceName(preserveIdentifier(sequence), jdbcEnvironment);
             }
         }
         return super.toPhysicalSequenceName(identifier, jdbcEnvironment);
