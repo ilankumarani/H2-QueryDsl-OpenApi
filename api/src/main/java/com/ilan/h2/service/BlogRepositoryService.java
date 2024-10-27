@@ -35,7 +35,7 @@ public class BlogRepositoryService {
 
     public List<Blog> findBlogByTitleJdbcTemplate(String title) {
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-        return jdbcTemplate.query("SELECT * FROM BLOG_SCHEMA.BLOG_DETAILS WHERE TITLE = ?", new Object[]{"TITLE"},  new BeanPropertyRowMapper(Blog.class));
+        return jdbcTemplate.query("SELECT * FROM BLOG_SCHEMA.BLOG_DETAILS WHERE TITLE = ?", new Object[]{title},  new BeanPropertyRowMapper(Blog.class));
     }
 
     public List<Blog> findBlogByTitleNamedParameterJdbcTemplate(String title) {

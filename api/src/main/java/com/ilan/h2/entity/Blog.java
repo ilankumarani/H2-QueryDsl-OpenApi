@@ -1,10 +1,12 @@
 package com.ilan.h2.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Table(name = "BLOG_DETAILS", schema = "BLOG_SCHEMA")
@@ -28,6 +30,8 @@ public class Blog {
     @Column(name = "content")
     private String content;
 
+    @JsonBackReference
+    @ToString.Exclude
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "owner_id")
     private Owner owner;
