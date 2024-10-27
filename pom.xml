@@ -134,7 +134,7 @@
                                 <goal>process</goal>
                             </goals>
                             <configuration>
-                                <outputDirectory>${project.build.directory}/generated-sources/java</outputDirectory>
+                                <outputDirectory>${project.build.directory}/generated-sources</outputDirectory>
                                 <processor>com.querydsl.apt.jpa.JPAAnnotationProcessor</processor>
                             </configuration>
                         </execution>
@@ -145,8 +145,7 @@
                                 <goal>test-process</goal>
                             </goals>
                             <configuration>
-                                <outputDirectory>${project.build.directory}/generated-test-sources/java
-                                </outputDirectory>
+                                <outputDirectory>${project.build.directory}/generated-test-sources</outputDirectory>
                                 <processor>com.querydsl.apt.jpa.JPAAnnotationProcessor</processor>
                             </configuration>
                         </execution>
@@ -185,7 +184,7 @@
                             <phase>generate-sources</phase>
                             <configuration>
                                 <!-- source output directory -->
-                                <outputDirectory>${project.build.directory}/generated-sources/java</outputDirectory>
+                                <outputDirectory>${project.build.directory}/generated-sources</outputDirectory>
                                 <processors>
                                     <processor>org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor</processor>
                                 </processors>
@@ -199,7 +198,7 @@
                             <phase>generate-test-sources</phase>
                             <configuration>
                                 &lt;!&ndash; source output directory &ndash;&gt;
-                                <outputDirectory>${project.build.directory}/generated-test-sources/java
+                                <outputDirectory>${project.build.directory}/generated-test-sources
                                 </outputDirectory>
                                 <processors>
                                     <processor>org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor</processor>
