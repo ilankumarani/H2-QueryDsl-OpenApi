@@ -102,6 +102,18 @@
 
 
     <build>
+        <sourceDirectory>src/main/java</sourceDirectory>
+        <testSourceDirectory>src/test/java</testSourceDirectory>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
+        <testResources>
+            <testResource>
+                <directory>src/test/resources</directory>
+            </testResource>
+        </testResources>
         <pluginManagement>
             <plugins>
 
@@ -115,12 +127,25 @@
                     <version>1.1.3</version>
                     <executions>
                         <execution>
+                            <id>Qgenerate-source-entities</id>
+                            <phase>generate-sources</phase>
                             <goals>
                                 <goal>process</goal>
                             </goals>
-                            <phase>generate-sources</phase>
                             <configuration>
                                 <outputDirectory>${project.build.directory}/generated-sources/java</outputDirectory>
+                                <processor>com.querydsl.apt.jpa.JPAAnnotationProcessor</processor>
+                            </configuration>
+                        </execution>
+                        <execution>
+                            <id>Qgenerate-test-entities</id>
+                            <phase>generate-test-sources</phase>
+                            <goals>
+                                <goal>test-process</goal>
+                            </goals>
+                            <configuration>
+                                <outputDirectory>${project.build.directory}/generated-test-sources/java
+                                </outputDirectory>
                                 <processor>com.querydsl.apt.jpa.JPAAnnotationProcessor</processor>
                             </configuration>
                         </execution>
@@ -152,8 +177,8 @@
                     <version>5.1</version>
                     <executions>
                         <execution>
-                            <id>process</id>
-                             <goals>
+                            <id>_Qgenerate-source-entities</id>
+                            <goals>
                                 <goal>process</goal>
                             </goals>
                             <phase>generate-sources</phase>
@@ -165,6 +190,21 @@
                                 </processors>
                             </configuration>
                         </execution>
+                        <!--<execution>
+                            <id>_Qgenerate-test-entities</id>
+                            <goals>
+                                <goal>process-test</goal>
+                            </goals>
+                            <phase>generate-sources</phase>
+                            <configuration>
+                                &lt;!&ndash; source output directory &ndash;&gt;
+                                <outputDirectory>${project.build.directory}/generated-test-sources/java
+                                </outputDirectory>
+                                <processors>
+                                    <processor>org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor</processor>
+                                </processors>
+                            </configuration>
+                        </execution>-->
                     </executions>
                     <dependencies>
                         <dependency>
