@@ -27,6 +27,18 @@ public class CustomPhysicalNamingStrategy extends PhysicalNamingStrategyStandard
     }
 
     @Override
+    public Identifier toPhysicalSequenceName(Identifier identifier, JdbcEnvironment jdbcEnvironment) {
+        if (identifier != null) {
+            String identifierText = identifier.getText();
+            if (isSpelExpression(identifierText)) {
+                String catalog = resolveSpelExpression(identifierText, "Sequence");
+                return super.toPhysicalSequenceName(preserveIdentifier(catalog), jdbcEnvironment);
+            }
+        }
+        return super.toPhysicalSequenceName(identifier, jdbcEnvironment);
+    }
+
+    @Override
     public Identifier toPhysicalCatalogName(Identifier identifier, JdbcEnvironment jdbcEnvironment) {
         if (identifier != null) {
             String identifierText = identifier.getText();
