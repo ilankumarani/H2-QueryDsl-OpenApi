@@ -13,6 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
@@ -55,8 +56,19 @@ public class BlogServiceTest {
         List<Blog> f3 = blogRepositoryService.findBlogByTitleNamedParameterJdbcTemplate(blogSaved.getTitle());
 
 
-        /*assertTrue(f1.contains(blogSaved), "Record not found for JpaRepository");
-        assertTrue(f2.contains(blogSaved), "Record not found for JdbcTemplate");
-        assertTrue(f3.contains(blogSaved), "Record not found for NamedParameterJdbcTemplate");*/
+        verify(f1, blogSaved);
+        verify(f2, blogSaved);
+        verify(f3, blogSaved);
+    }
+
+    private void verify(List<Blog> blogs, Blog blogSaved){
+        blogs.stream()
+                .filter(e->e.getId() ==blogSaved.getId())
+                .findFirst()
+                .ifPresent(e->{
+                    assertEquals(e.getCategory(), blogSaved.getCategory());
+                    assertEquals(e.getTitle(), blogSaved.getTitle());
+                    assertEquals(e.getContent(), blogSaved.getContent());
+                });
     }
 }
