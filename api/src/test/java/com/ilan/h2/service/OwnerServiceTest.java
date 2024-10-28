@@ -50,10 +50,15 @@ public class OwnerServiceTest {
         Owner ownerSaved = ownerRepository.save(owner);
         Blog blogSaved = blogRepository.save(blog);
 
-       /* assertTrue(ownerSaved.equals(ownerRepositoryService.findOwnerByName(ownerSaved.getName()).stream().findFirst().get()));
 
-        Assertions.assertThat(ownerSaved).isEqualToComparingFieldByFieldRecursively(ownerRepositoryService.findOwnerByName(ownerSaved.getName()).stream().findFirst().get());
-        assertEquals(ownerSaved, ownerRepositoryService.findOwnerByName(ownerSaved.getName()).stream().findFirst().get(), "Record found for NOT JpaRepository");
-        assertEquals(ownerSaved, ownerRepositoryService.findOwnerByNameAndTitle(ownerSaved.getName(), blog.getTitle()).stream().findFirst().get(), "Record found for NOT JpaRepository");*/
+        verify(ownerSaved, ownerRepositoryService.findOwnerByName(ownerSaved.getName()).stream().findFirst().get());
+        verify(ownerSaved, ownerRepositoryService.findOwnerByName(ownerSaved.getName()).stream().findFirst().get());
+        verify(ownerSaved, ownerRepositoryService.findOwnerByNameAndTitle(ownerSaved.getName(), blog.getTitle()).stream().findFirst().get());
+    }
+
+    private void verify(Owner ownerSaved, Owner owner) {
+        assertEquals(ownerSaved.getId(), owner.getId());
+        assertEquals(ownerSaved.getName(), owner.getName());
+        assertEquals(ownerSaved.getEmail(), owner.getEmail());
     }
 }

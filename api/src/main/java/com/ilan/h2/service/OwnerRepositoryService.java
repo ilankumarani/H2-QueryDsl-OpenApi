@@ -27,7 +27,8 @@ public class OwnerRepositoryService {
     public List<Owner> findOwnerByNameAndTitle(String name, String title) {
         JPAQueryFactory queryFactory = new JPAQueryFactory(entityManager);
         return queryFactory.selectFrom(owner)
-                .innerJoin(blog)
+                .join(blog)
+                .on(owner.id.eq(blog.owner.id))
                 .where(owner.name.eq(name))
                 .where(blog.title.eq(title))
                 .fetch();
