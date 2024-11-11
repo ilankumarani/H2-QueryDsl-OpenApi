@@ -15,6 +15,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.Transient;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -23,6 +24,9 @@ import org.springframework.context.annotation.Profile;
 
 import javax.sql.DataSource;
 import java.io.File;
+import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 @SpringBootApplication
 @RequiredArgsConstructor
@@ -43,30 +47,30 @@ public class H2Application {
     public CommandLineRunner dataLoad() {
         return args -> {
             DataLoad.insertData(ownerRepository, blogRepository);
-
-            java.sql.Connection conn = dataSource.getConnection();
-            MetaDataExporter exporter = new MetaDataExporter();
-            exporter.setPackageName("com.myproject.mydomain");
-            exporter.setNamePrefix("S");
-            exporter.setTargetFolder(new File("target/generated-sources/java"));
-            exporter.export(conn.getMetaData());
-
-
         };
     }
 
 
-    @Profile("sqlGen")
     @Bean
     public CommandLineRunner sqlQueryDsl() {
         return args -> {
+            ClassLoader classLoader = this.getClass().getClassLoader();
+            System.out.println(classLoader.getDefinedPackages());
             java.sql.Connection conn = dataSource.getConnection();
             MetaDataExporter exporter = new MetaDataExporter();
             exporter.setPackageName("com.myproject.mydomain");
             exporter.setNamePrefix("S");
-            exporter.setTargetFolder(new File("target/generated-sources/java"));
+            exporter.setExportAll(Boolean.FALSE);
+            exporter.setExportTables(Boolean.TRUE);
+            exporter.setTargetFolder(new File(getSrcMainPath().toUri()));
             exporter.export(conn.getMetaData());
         };
+    }
+
+    public static Path getSrcMainPath() {
+        String userDir = System.getProperty("user.dir");
+        Path srcMain = Paths.get(userDir, "api", "src", "main", "java");
+        return srcMain;
     }
 
 

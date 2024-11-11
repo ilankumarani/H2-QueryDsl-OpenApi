@@ -141,6 +141,36 @@
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
             </plugin>
+
+            <!--<plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <excludeDevtools>true</excludeDevtools>
+                    <profiles>sqlGen</profiles>
+                    <jvmArguments>-DCONFIG_ENVIRONMENT=functionaltest</jvmArguments>
+                    <mainClass>com.ilan.h2.H2Application</mainClass>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>start-service</id>
+                        <phase>pre-integration-test</phase>
+                        <goals>
+                            <goal>start</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>stop-service</id>
+                        <phase>post-integration-test</phase>
+                        <goals>
+                            <goal>stop</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>-->
+
+
+
         </plugins>
     </build>
 
