@@ -36,7 +36,4 @@ public class H2Application {
         };
     }
 
-
-
-
 }
