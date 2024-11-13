@@ -1,4 +1,3 @@
-/*
 package com.ilan.h2.service;
 
 import com.querydsl.sql.SQLQueryFactory;
@@ -7,7 +6,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import static com.myproject.mydomain.SOwnerDetails.ownerDetails;
+import static com.sql.relation.SOwnerDetails.ownerDetails;
+
 
 @Service
 @RequiredArgsConstructor
@@ -22,4 +22,3 @@ public class QueryDslSqlService {
         return names;
     }
 }
-*/
