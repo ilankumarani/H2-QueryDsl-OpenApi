@@ -24,12 +24,13 @@ public class DbConfig {
     public com.querydsl.sql.Configuration querydslConfiguration() {
         SQLTemplates templates = H2Templates.builder()
                 .printSchema() // to include the schema in the output
-                .quote()       // to quote names
+                //.quote()       // to quote names
                 .newLineToSingleSpace() // to replace new lines with single space in the output
                 //.escape(ch)    // to set the escape char
                 .build();
         com.querydsl.sql.Configuration configuration = new com.querydsl.sql.Configuration (templates);
         configuration.setExceptionTranslator (new SpringExceptionTranslator());
+        configuration.setUseLiterals(Boolean.TRUE);
         return configuration;
     }
     @Bean
