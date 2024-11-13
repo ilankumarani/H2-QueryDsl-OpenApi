@@ -1,3 +1,4 @@
+/*
 package com.ilan.h2.service;
 
 import com.querydsl.sql.SQLQueryFactory;
@@ -21,3 +22,4 @@ public class QueryDslSqlService {
         return names;
     }
 }
+*/

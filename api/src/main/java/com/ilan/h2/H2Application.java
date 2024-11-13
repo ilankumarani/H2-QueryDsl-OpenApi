@@ -3,7 +3,7 @@ package com.ilan.h2;
 import com.ilan.h2.repository.BlogRepository;
 import com.ilan.h2.repository.OwnerRepository;
 import com.ilan.h2.service.DataLoad;
-import com.ilan.h2.service.QueryDslSqlService;
+//import com.ilan.h2.service.QueryDslSqlService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
@@ -18,7 +18,7 @@ public class H2Application {
 
     private final BlogRepository blogRepository;
     private final OwnerRepository ownerRepository;
-    private final QueryDslSqlService queryDslSqlService;
+    //private final QueryDslSqlService queryDslSqlService;
 
     public static void main(String[] args) {
 
@@ -31,9 +31,9 @@ public class H2Application {
         return args -> {
             DataLoad.insertData(ownerRepository, blogRepository);
 
-            queryDslSqlService.getNames().stream().forEach(e->{
+            /*queryDslSqlService.getNames().stream().forEach(e->{
                 log.info("QueryDsl SQL Name ::: {}", e.toString());
-            });
+            });*/
 
         };
     }

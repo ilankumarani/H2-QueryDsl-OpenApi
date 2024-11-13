@@ -40,7 +40,7 @@ public class DbConfig {
     }
 
 
-    @ConditionalOnProperty(prefix = "sqlQueryDsl", name = "generate", havingValue = "true")
+    //@ConditionalOnProperty(prefix = "sqlQueryDsl", name = "generate", havingValue = "true")
     @Bean
     public CommandLineRunner sqlQueryDsl(DataSource dataSource) {
         return args -> {
@@ -48,7 +48,7 @@ public class DbConfig {
             System.out.println(classLoader.getDefinedPackages());
             java.sql.Connection conn = dataSource.getConnection();
             MetaDataExporter exporter = new MetaDataExporter();
-            exporter.setPackageName("com.myproject.mydomain");
+            exporter.setPackageName("com.sql.relation");
             exporter.setNamePrefix("S");
             exporter.setExportAll(Boolean.FALSE);
             exporter.setExportTables(Boolean.TRUE);
