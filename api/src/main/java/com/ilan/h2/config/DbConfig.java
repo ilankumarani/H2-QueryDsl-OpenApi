@@ -6,15 +6,21 @@ import com.querydsl.sql.SQLTemplates;
 import com.querydsl.sql.codegen.MetaDataExporter;
 import com.querydsl.sql.spring.SpringConnectionProvider;
 import com.querydsl.sql.spring.SpringExceptionTranslator;
+import com.querydsl.sql.types.DateTimeType;
+import com.querydsl.sql.types.LocalDateType;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.transaction.PlatformTransactionManager;
 
+import javax.inject.Provider;
 import javax.sql.DataSource;
 import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.sql.Connection;
 
 @Configuration
 public class DbConfig {
@@ -33,16 +39,20 @@ public class DbConfig {
         configuration.setUseLiterals(Boolean.TRUE);
         return configuration;
     }
+
+
     @Bean
     public SQLQueryFactory queryFactory (DataSource dataSource, com.querydsl.sql.Configuration configuration) {
-        SQLQueryFactory sqlQueryFactory = new SQLQueryFactory(configuration, dataSource);
+        SpringConnectionProvider provider = new SpringConnectionProvider(dataSource);
+        SQLQueryFactory sqlQueryFactory = new SQLQueryFactory(configuration, provider);
+        //SQLQueryFactory sqlQueryFactory = new SQLQueryFactory(configuration, dataSource);
         return sqlQueryFactory;
     }
 
 
-    //@ConditionalOnProperty(prefix = "sqlQueryDsl", name = "generate", havingValue = "true")
+    @ConditionalOnProperty(prefix = "sqlQueryDsl", name = "generate", havingValue = "true")
     @Bean
-    public CommandLineRunner sqlQueryDsl(DataSource dataSource) {
+    public CommandLineRunner sqlQueryDslGenerator(DataSource dataSource) {
         return args -> {
             ClassLoader classLoader = this.getClass().getClassLoader();
             System.out.println(classLoader.getDefinedPackages());
