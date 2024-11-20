@@ -1,41 +1,39 @@
 package com.ilan.h2;
 
-import com.ilan.h2.entity.Blog;
-import com.ilan.h2.entity.Owner;
 import com.ilan.h2.repository.BlogRepository;
 import com.ilan.h2.repository.OwnerRepository;
-import com.ilan.h2.service.BlogRepositoryService;
 import com.ilan.h2.service.DataLoad;
+import com.ilan.h2.service.QueryDslSqlService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.util.Assert;
 
-import java.util.Arrays;
-import java.util.List;
-
-@SpringBootApplication
+@Slf4j
 @RequiredArgsConstructor
+@SpringBootApplication
 public class H2Application {
 
     private final BlogRepository blogRepository;
     private final OwnerRepository ownerRepository;
-    private final BlogRepositoryService blogRepositoryService;
+    private final QueryDslSqlService queryDslSqlService;
 
     public static void main(String[] args) {
-
         SpringApplication.run(H2Application.class, args);
     }
 
 
     @Bean
-    public CommandLineRunner startup() {
+    public CommandLineRunner dataLoad() {
         return args -> {
             DataLoad.insertData(ownerRepository, blogRepository);
+
+            queryDslSqlService.getNames().stream().forEach(e->{
+                log.info("QueryDsl SQL Name ::: {}", e.toString());
+            });
         };
     }
-
 
 }

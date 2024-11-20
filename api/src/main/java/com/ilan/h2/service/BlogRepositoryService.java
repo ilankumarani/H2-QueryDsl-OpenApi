@@ -1,6 +1,7 @@
 package com.ilan.h2.service;
 
 import com.ilan.h2.entity.Blog;
+import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -28,8 +29,9 @@ public class BlogRepositoryService {
 
     public List<Blog> findBlogByTitle(String title) {
         JPAQueryFactory queryFactory = new JPAQueryFactory(entityManager);
+        BooleanExpression booleanExpression = blog.title.eq(title);
         return queryFactory.selectFrom(blog)
-                .where(blog.title.eq(title))
+                .where(booleanExpression)
                 .fetch();
     }
 

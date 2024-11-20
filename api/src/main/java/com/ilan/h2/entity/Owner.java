@@ -12,7 +12,7 @@ import java.util.Collection;
 import java.util.List;
 
 @Entity
-@Table(name = "OWNER_DETAILS", schema = "OWNER_SCHEMA")
+@Table(name = "${tableName.com.ilan.h2.entity.owner:OWNER_DETAILS}", schema = "${schemaName.com.ilan.h2.entity.owner:OWNER_SCHEMA}")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
