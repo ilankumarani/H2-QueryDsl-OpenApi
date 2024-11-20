@@ -128,7 +128,8 @@
             <version>${liquibase.version}</version>
         </dependency>
 
-        <dependency>            <groupId>org.liquibase.ext</groupId>
+        <dependency>
+            <groupId>org.liquibase.ext</groupId>
             <artifactId>liquibase-hibernate6</artifactId>
             <version>${liquibase.version}</version>
             <scope>runtime</scope>
@@ -168,7 +169,7 @@
                     <username>sa</username>
                     <password></password>
                     <classpath>
-                        <path>target/class
+                        <path>target/class</path>
                     </classpath>
                 </configuration>
             </plugin>
@@ -200,7 +201,6 @@
                     </execution>
                 </executions>
             </plugin>-->
-
 
 
         </plugins>
