@@ -16,6 +16,8 @@ logging:
                         StatementCreatorUtils: TRACE
 
 spring:
+    liquibase:
+        enabled: false
     datasource:
         driverClassName: org.h2.Driver
         username: sa

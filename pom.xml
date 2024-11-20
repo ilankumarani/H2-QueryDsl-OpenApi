@@ -33,6 +33,7 @@
         <maven-processor-plugin.version>5.1</maven-processor-plugin.version>
         <lombok-maven-plugin.version>1.18.20.0</lombok-maven-plugin.version>
         <jacoco-maven-plugin.verion>0.8.12</jacoco-maven-plugin.verion>
+        <liquibase.version>4.29.2</liquibase.version>
         <!--plugin-->
     </properties>
     <dependencyManagement>
