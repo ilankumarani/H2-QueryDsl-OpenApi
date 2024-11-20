@@ -26,6 +26,7 @@
         <querydsl.version>5.1.0</querydsl.version>
         <mysql-connector-java.version>8.0.33</mysql-connector-java.version>
         <ojdbc10.version>19.22.0.0</ojdbc10.version>
+        <hibernate-proccesor.version>7.0.0.Alpha3</hibernate-proccesor.version>
 
         <!--plugin-->
         <lombok-maven-plugin.version>1.18.20.0</lombok-maven-plugin.version>
@@ -195,7 +196,8 @@
                                 <outputDirectory>${project.build.directory}/generated-sources</outputDirectory>
                                 <processors>
                                     <processor>lombok.launch.AnnotationProcessorHider$AnnotationProcessor</processor>
-                                    <processor>org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor</processor>
+                                    <!--<processor>org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor</processor>-->
+                                    <processor>org.hibernate.processor.HibernateProcessor</processor>
                                 </processors>
                             </configuration>
                         </execution>
@@ -211,12 +213,18 @@
                                 </outputDirectory>
                                 <processors>
                                     <processor>lombok.launch.AnnotationProcessorHider$AnnotationProcessor</processor>
-                                    <processor>org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor</processor>
+                                <!--<processor>org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor</processor>-->
+                                    <processor>org.hibernate.processor.HibernateProcessor</processor>
                                 </processors>
                             </configuration>
                         </execution>
                     </executions>
                     <dependencies>
+                        <dependency>
+                            <groupId>org.hibernate.orm</groupId>
+                            <artifactId>hibernate-processor</artifactId>
+                            <version>${hibernate-proccesor.version}</version>
+                        </dependency>
                         <dependency>
                             <groupId>org.hibernate.orm</groupId>
                             <artifactId>hibernate-jpamodelgen</artifactId>
