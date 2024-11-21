@@ -220,11 +220,11 @@
                         </execution>
                     </executions>
                     <dependencies>
-                        <dependency>
+                        <!--<dependency>
                             <groupId>org.hibernate.orm</groupId>
                             <artifactId>hibernate-processor</artifactId>
                             <version>${hibernate-proccesor.version}</version>
-                        </dependency>
+                        </dependency>-->
                         <dependency>
                             <groupId>org.hibernate.orm</groupId>
                             <artifactId>hibernate-jpamodelgen</artifactId>
