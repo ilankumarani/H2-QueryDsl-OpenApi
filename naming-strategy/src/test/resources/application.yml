@@ -25,7 +25,7 @@ spring:
       ddl-auto: create-drop
     properties:
       hibernate:
-        format_sql: true # To beautify or pretty print the SQL
-        show-sql: true
+        format_sql: false # To beautify or pretty print the SQL
+        show-sql: false
         hbm2ddl:
           auto: create-drop

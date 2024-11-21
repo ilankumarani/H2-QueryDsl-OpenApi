@@ -1,20 +1,3 @@
-logging:
-    level:
-        org:
-            hibernate:
-                SQL: DEBUG
-                stat: debug
-                SQL_SLOW: info
-                orm.jdbc.bind: TRACE #For prepared statements for JPA 6
-                orm.jdbc.extract: TRACE #For prepared statements for JPA 6
-                type.descriptor.sql.BasicBinder: TRACE #For prepared statements for JPA 5
-            # Logging SQL Statements with JdbcTemplate
-            springframework:
-                jdbc:
-                    core:
-                        JdbcTemplate: DEBUG
-                        StatementCreatorUtils: TRACE
-
 spring:
     liquibase:
         enabled: false
@@ -30,8 +13,8 @@ spring:
         properties:
             hibernate:
                 enable_lazy_load_no_trans: true
-                format_sql: true # To beautify or pretty print the SQL
-                show-sql: true
+                format_sql: false # To beautify or pretty print the SQL
+                show-sql: false
                 hbm2ddl:
                     auto: create-drop
 
