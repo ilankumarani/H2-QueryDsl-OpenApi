@@ -61,6 +61,7 @@ public class SqlQueryDslConfig {
             metadataExporterConfig.setNamePrefix("S");
             metadataExporterConfig.setExportAll(Boolean.FALSE);
             metadataExporterConfig.setExportTables(Boolean.TRUE);
+            metadataExporterConfig.setSchemaToPackage(Boolean.TRUE);
             metadataExporterConfig.setTargetFolder(new File(getSrcMainPath().toUri()));
             MetaDataExporter exporter = new MetaDataExporter(metadataExporterConfig);
             exporter.export(conn.getMetaData());
