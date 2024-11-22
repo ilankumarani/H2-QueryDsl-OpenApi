@@ -7,7 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-import static com.sql.relation.SOwnerDetails.ownerDetails;
+import static com.querydsl.sql.SOwnerDetails.ownerDetails;
 
 
 @Transactional

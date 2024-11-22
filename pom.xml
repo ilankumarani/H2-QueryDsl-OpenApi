@@ -23,7 +23,7 @@
 
         <mapstruct-processor>1.6.2</mapstruct-processor>
         <springdoc.version>2.4.0</springdoc.version>
-        <querydsl.version>5.1.0</querydsl.version>
+        <openfeign.querydsl.version>6.8</openfeign.querydsl.version>
         <mysql-connector-java.version>8.0.33</mysql-connector-java.version>
         <ojdbc10.version>19.22.0.0</ojdbc10.version>
         <hibernate-proccesor.version>7.0.0.Alpha3</hibernate-proccesor.version>
@@ -62,23 +62,21 @@
 
             <!-- QueryDSL -->
             <dependency>
-                <groupId>com.querydsl</groupId>
+                <groupId>io.github.openfeign.querydsl</groupId>
                 <artifactId>querydsl-core</artifactId>
-                <version>${querydsl.version}</version>
+                <version>${openfeign.querydsl.version}</version>
             </dependency>
 
             <dependency>
-                <groupId>com.querydsl</groupId>
+                <groupId>io.github.openfeign.querydsl</groupId>
                 <artifactId>querydsl-jpa</artifactId>
-                <version>${querydsl.version}</version>
-                <classifier>jakarta</classifier>
+                <version>${openfeign.querydsl.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.querydsl</groupId>
+                <groupId>io.github.openfeign.querydsl</groupId>
                 <artifactId>querydsl-apt</artifactId>
-                <version>${querydsl.version}</version>
+                <version>${openfeign.querydsl.version}</version>
                 <scope>provided</scope>
-                <classifier>jakarta</classifier>
             </dependency>
 
 
@@ -161,21 +159,19 @@
                     </executions>
                     <dependencies>
                         <dependency>
-                            <groupId>com.querydsl</groupId>
+                            <groupId>io.github.openfeign.querydsl</groupId>
                             <artifactId>querydsl-core</artifactId>
-                            <version>${querydsl.version}</version>
+                            <version>${openfeign.querydsl.version}</version>
                         </dependency>
                         <dependency>
-                            <groupId>com.querydsl</groupId>
+                            <groupId>io.github.openfeign.querydsl</groupId>
                             <artifactId>querydsl-jpa</artifactId>
-                            <version>${querydsl.version}</version>
-                            <classifier>jakarta</classifier>
+                            <version>${openfeign.querydsl.version}</version>
                         </dependency>
                         <dependency>
-                            <groupId>com.querydsl</groupId>
+                            <groupId>io.github.openfeign.querydsl</groupId>
                             <artifactId>querydsl-apt</artifactId>
-                            <version>${querydsl.version}</version>
-                            <classifier>jakarta</classifier>
+                            <version>${openfeign.querydsl.version}</version>
                         </dependency>
                     </dependencies>
                 </plugin>

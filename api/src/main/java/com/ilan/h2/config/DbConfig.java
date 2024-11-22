@@ -4,8 +4,13 @@ import com.querydsl.sql.H2Templates;
 import com.querydsl.sql.SQLQueryFactory;
 import com.querydsl.sql.SQLTemplates;
 import com.querydsl.sql.codegen.MetaDataExporter;
+import com.querydsl.sql.codegen.MetadataExporterConfig;
+import com.querydsl.sql.codegen.MetadataExporterConfigImpl;
 import com.querydsl.sql.spring.SpringConnectionProvider;
 import com.querydsl.sql.spring.SpringExceptionTranslator;
+import com.querydsl.sql.types.LocalDateTimeType;
+import com.querydsl.sql.types.LocalDateType;
+import io.github.openfeign.querydsl.sql.json.types.JSONType;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
@@ -30,6 +35,9 @@ public class DbConfig {
                 .build();
         com.querydsl.sql.Configuration configuration = new com.querydsl.sql.Configuration (templates);
         configuration.setExceptionTranslator (new SpringExceptionTranslator());
+        configuration.register(new LocalDateTimeType());
+        configuration.register(new LocalDateType());
+        configuration.register(new JSONType());
         configuration.setUseLiterals(Boolean.TRUE);
         return configuration;
     }
@@ -37,10 +45,8 @@ public class DbConfig {
 
     @Bean
     public SQLQueryFactory queryFactory (DataSource dataSource, com.querydsl.sql.Configuration configuration) {
-        SpringConnectionProvider provider = new SpringConnectionProvider(dataSource);
-        SQLQueryFactory sqlQueryFactory = new SQLQueryFactory(configuration, provider);
-        //SQLQueryFactory sqlQueryFactory = new SQLQueryFactory(configuration, dataSource);
-        return sqlQueryFactory;
+        var provider = new SpringConnectionProvider(dataSource);
+        return new SQLQueryFactory(querydslConfiguration(), provider);
     }
 
 
@@ -51,12 +57,13 @@ public class DbConfig {
             ClassLoader classLoader = this.getClass().getClassLoader();
             System.out.println(classLoader.getDefinedPackages());
             java.sql.Connection conn = dataSource.getConnection();
-            MetaDataExporter exporter = new MetaDataExporter();
-            exporter.setPackageName("com.sql.relation");
-            exporter.setNamePrefix("S");
-            exporter.setExportAll(Boolean.FALSE);
-            exporter.setExportTables(Boolean.TRUE);
-            exporter.setTargetFolder(new File(getSrcMainPath().toUri()));
+            MetadataExporterConfigImpl metadataExporterConfig = new MetadataExporterConfigImpl();
+            metadataExporterConfig.setPackageName("com.querydsl.sql");
+            metadataExporterConfig.setNamePrefix("S");
+            metadataExporterConfig.setExportAll(Boolean.FALSE);
+            metadataExporterConfig.setExportTables(Boolean.TRUE);
+            metadataExporterConfig.setTargetFolder(new File(getSrcMainPath().toUri()));
+            MetaDataExporter exporter = new MetaDataExporter(metadataExporterConfig);
             exporter.export(conn.getMetaData());
         };
     }
