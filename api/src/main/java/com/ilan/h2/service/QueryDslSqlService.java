@@ -15,10 +15,10 @@ import static com.querydsl.sql.SOwnerDetails.ownerDetails;
 @RequiredArgsConstructor
 public class QueryDslSqlService {
 
-    private final SQLQueryFactory queryFactory;
+    private final SQLQueryFactory sqlQueryFactory;
 
     public List<String> getNames() {
-        List<String> names = queryFactory.select(ownerDetails.name).from(ownerDetails)
+        List<String> names = sqlQueryFactory.select(ownerDetails.name).from(ownerDetails)
                 .where(ownerDetails.name.eq("Ilankumaran"))
                 .fetch();
         return names;

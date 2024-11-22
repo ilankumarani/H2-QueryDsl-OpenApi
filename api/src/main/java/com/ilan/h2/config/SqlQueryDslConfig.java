@@ -4,7 +4,6 @@ import com.querydsl.sql.H2Templates;
 import com.querydsl.sql.SQLQueryFactory;
 import com.querydsl.sql.SQLTemplates;
 import com.querydsl.sql.codegen.MetaDataExporter;
-import com.querydsl.sql.codegen.MetadataExporterConfig;
 import com.querydsl.sql.codegen.MetadataExporterConfigImpl;
 import com.querydsl.sql.spring.SpringConnectionProvider;
 import com.querydsl.sql.spring.SpringExceptionTranslator;
@@ -22,7 +21,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 @Configuration
-public class DbConfig {
+public class SqlQueryDslConfig {
 
 
     @Bean
@@ -44,7 +43,7 @@ public class DbConfig {
 
 
     @Bean
-    public SQLQueryFactory queryFactory (DataSource dataSource, com.querydsl.sql.Configuration configuration) {
+    public SQLQueryFactory sqlQueryFactory(DataSource dataSource, com.querydsl.sql.Configuration configuration) {
         var provider = new SpringConnectionProvider(dataSource);
         return new SQLQueryFactory(querydslConfiguration(), provider);
     }
