@@ -57,7 +57,7 @@ public class SqlQueryDslConfig {
             System.out.println(classLoader.getDefinedPackages());
             java.sql.Connection conn = dataSource.getConnection();
             MetadataExporterConfigImpl metadataExporterConfig = new MetadataExporterConfigImpl();
-            metadataExporterConfig.setPackageName("com.querydsl.sql");
+            metadataExporterConfig.setPackageName("com.querydsl.sql.generated");
             metadataExporterConfig.setNamePrefix("S");
             metadataExporterConfig.setExportAll(Boolean.FALSE);
             metadataExporterConfig.setExportTables(Boolean.TRUE);
