@@ -14,4 +14,4 @@
 [click here](doc/Specification_Maven_plugin.md)
 
 ### Open API configuration
-[click here](doc/Specification_Maven_plugin.md)
+[click here](doc/OpenApi.md)

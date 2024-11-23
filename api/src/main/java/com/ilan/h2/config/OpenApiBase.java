@@ -33,6 +33,7 @@ public abstract class OpenApiBase {
     public OpenAPI customizeOpenAPI() {
         final String securitySchemeName = "bearerAuth";
         return new OpenAPI()
+                .info(getInfo())
                 .servers(getServers())
                 .addSecurityItem(new SecurityRequirement()
                         .addList(securitySchemeName))
