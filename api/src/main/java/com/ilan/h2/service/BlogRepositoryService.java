@@ -3,9 +3,11 @@ package com.ilan.h2.service;
 import com.ilan.h2.entity.Blog;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
+import com.querydsl.sql.SQLQueryFactory;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Description;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -24,9 +26,11 @@ public class BlogRepositoryService {
     @PersistenceContext
     private EntityManager entityManager;
 
+    private final SQLQueryFactory sqlQueryFactory;
 
     private final DataSource dataSource;
 
+    @Description("QueryDSL example")
     public List<Blog> findBlogByTitle(String title) {
         JPAQueryFactory queryFactory = new JPAQueryFactory(entityManager);
         BooleanExpression booleanExpression = blog.title.eq(title);
