@@ -1,11 +1,13 @@
 package com.ilan.h2.service;
 
 import com.ilan.h2.entity.Blog;
+import com.querydsl.core.types.Projections;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.querydsl.sql.SQLQueryFactory;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Description;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -13,11 +15,13 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.sql.DataSource;
 import java.util.List;
 
 import static com.ilan.h2.entity.QBlog.blog;
+import static com.querydsl.sql.generated.blog_schema.SBlogDetails.blogDetails;
 
 @Service
 @RequiredArgsConstructor
@@ -35,6 +39,22 @@ public class BlogRepositoryService {
         JPAQueryFactory queryFactory = new JPAQueryFactory(entityManager);
         BooleanExpression booleanExpression = blog.title.eq(title);
         return queryFactory.selectFrom(blog)
+                .where(booleanExpression)
+                .fetch();
+    }
+
+
+
+    @Transactional
+    @Description("Sql QueryDSL example")
+    public List<Blog> sqlFindBlogByTitle(String title) {
+        BooleanExpression booleanExpression = blogDetails.title.eq(title);
+        return sqlQueryFactory.select(Projections.bean(Blog.class, blogDetails.id
+                        , blogDetails.title
+                        , blogDetails.category
+                        , blogDetails.content
+                        , blogDetails.ownerId))
+                .from(blogDetails)
                 .where(booleanExpression)
                 .fetch();
     }
