@@ -1,5 +1,3 @@
-server.port : ${random.int(7070,7099)}
-
 logging:
     level:
         com:
