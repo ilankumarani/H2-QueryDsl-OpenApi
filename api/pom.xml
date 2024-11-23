@@ -15,7 +15,7 @@
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <app.profiles>local,dev</app.profiles>
+        <app.profiles>create</app.profiles>
         <start-class>com.ilan.h2.H2Application</start-class>
     </properties>
 
@@ -162,7 +162,7 @@
                 <artifactId>jacoco-maven-plugin</artifactId>
             </plugin>
 
-            <plugin>
+            <!--<plugin>
                 <groupId>org.liquibase</groupId>
                 <artifactId>liquibase-maven-plugin</artifactId>
                 <version>${liquibase.version}</version>
@@ -177,60 +177,12 @@
                         <path>target/class</path>
                     </classpath>
                 </configuration>
-            </plugin>
-
-
-            <!--<plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <profiles>${app.profiles}</profiles>
-                    <mainClass>${start-class}</mainClass>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>repackage</id>
-                        <goals>
-                            <goal>start</goal>
-                        </goals>
-                        <configuration>
-                            <mainClass>${start-class}</mainClass>
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>-->
-
 
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <excludeDevtools>true</excludeDevtools>
-                    <profiles>create</profiles>
-                    <jvmArguments>-DCONFIG_ENVIRONMENT=functionaltest</jvmArguments>
-                    <mainClass>com.ilan.h2.H2Application</mainClass>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>start-service</id>
-                        <phase>pre-integration-test</phase>
-                        <goals>
-                            <goal>start</goal>
-                        </goals>
-                        <configuration>
-                            <mainClass>${start-class}</mainClass>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>stop-service</id>
-                        <phase>post-integration-test</phase>
-                        <goals>
-                            <goal>stop</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
-
 
         </plugins>
     </build>
