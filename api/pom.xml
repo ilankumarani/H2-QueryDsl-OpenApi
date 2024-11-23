@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.ilan</groupId>
-        <artifactId>h2</artifactId>
+        <artifactId>ilan-querydsl</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
@@ -15,6 +15,8 @@
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <app.profiles>local,dev</app.profiles>
+        <start-class>com.ilan.h2.H2Application</start-class>
     </properties>
 
     <dependencies>
@@ -182,6 +184,27 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
+                    <profiles>${app.profiles}</profiles>
+                    <mainClass>${start-class}</mainClass>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>repackage</id>
+                        <goals>
+                            <goal>start</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>${start-class}</mainClass>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>-->
+
+
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
                     <excludeDevtools>true</excludeDevtools>
                     <profiles>sqlGen</profiles>
                     <jvmArguments>-DCONFIG_ENVIRONMENT=functionaltest</jvmArguments>
@@ -194,6 +217,9 @@
                         <goals>
                             <goal>start</goal>
                         </goals>
+                        <configuration>
+                            <mainClass>${start-class}</mainClass>
+                        </configuration>
                     </execution>
                     <execution>
                         <id>stop-service</id>
@@ -203,7 +229,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>-->
+            </plugin>
 
 
         </plugins>
