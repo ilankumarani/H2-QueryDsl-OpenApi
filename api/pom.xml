@@ -206,7 +206,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <excludeDevtools>true</excludeDevtools>
-                    <profiles>sqlGen</profiles>
+                    <profiles>create</profiles>
                     <jvmArguments>-DCONFIG_ENVIRONMENT=functionaltest</jvmArguments>
                     <mainClass>com.ilan.h2.H2Application</mainClass>
                 </configuration>
