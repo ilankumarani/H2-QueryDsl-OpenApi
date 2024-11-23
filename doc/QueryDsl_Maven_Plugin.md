@@ -1,4 +1,4 @@
-#### Generating Qclass for entity
+#### Generating Qclass for entities
 
 ```xml
 <plugin>
