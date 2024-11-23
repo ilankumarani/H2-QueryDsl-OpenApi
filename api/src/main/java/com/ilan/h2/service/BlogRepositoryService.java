@@ -5,6 +5,7 @@ import com.querydsl.core.types.Projections;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.querydsl.sql.SQLQueryFactory;
+import jakarta.annotation.PostConstruct;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 
@@ -33,6 +34,14 @@ public class BlogRepositoryService {
     private final SQLQueryFactory sqlQueryFactory;
 
     private final DataSource dataSource;
+
+    private JPAQueryFactory queryFactory;
+
+    @PostConstruct
+    public void afterBeanInit() {
+        queryFactory = new JPAQueryFactory(entityManager);
+    }
+
 
     @Description("QueryDSL example")
     public List<Blog> findBlogByTitle(String title) {
