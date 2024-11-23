@@ -26,7 +26,7 @@ import static org.springdoc.core.utils.Constants.ALL_PATTERN;
 
 @Configuration
 @RequiredArgsConstructor
-public class OpenApiConfig {
+public class OpenApiConfig extends OpenApiBase{
 
     private final SpringDocUrl springDocUrl;
 
@@ -44,7 +44,7 @@ public class OpenApiConfig {
     }
 
 
-    //Here we are authenticating for OWNER group
+    //Here we are authenticating API's for OWNER group
     @Bean
     public GroupedOpenApi ownerApis() {
         return GroupedOpenApi.builder()
@@ -56,6 +56,7 @@ public class OpenApiConfig {
     }
 
 
+    //Here we are authenticating API's for OWNER group
     OpenApiCustomizer openApiCustomizer = openAPI -> {
         final String securitySchemeName = "bearerAuth";
         openAPI
@@ -73,55 +74,6 @@ public class OpenApiConfig {
 
     };
 
-
-    @ConditionalOnProperty(prefix = "springdoc", name = "security.enabled", havingValue = "true", matchIfMissing = true)
-    @Bean
-    public OpenAPI customizeOpenAPI() {
-        final String securitySchemeName = "bearerAuth";
-        return new OpenAPI()
-                .servers(getServers())
-                .addSecurityItem(new SecurityRequirement()
-                        .addList(securitySchemeName))
-                .components(new Components()
-                        .addSecuritySchemes(securitySchemeName, new SecurityScheme()
-                                .name(securitySchemeName)
-                                .in(SecurityScheme.In.HEADER)
-                                .type(SecurityScheme.Type.HTTP)
-                                .scheme("bearer")
-                                .bearerFormat("JWT")));
-    }
-
-
-    @ConditionalOnProperty(prefix = "springdoc", name = "security.enabled", havingValue = "false", matchIfMissing = true)
-    @Bean
-    public OpenAPI myOpenAPI() {
-        return new OpenAPI()
-                .info(this.getInfo())
-                .servers(getServers());
-    }
-
-    private Info getInfo() {
-        return new Info()
-                .title("Blog Owner Management API")
-                .version("1.0")
-                .contact(this.getContact())
-                .description("This API exposes endpoints to manage tutorials.")
-                .termsOfService("https://www.google.com/terms")
-                .license(this.getLicense());
-    }
-
-    private Contact getContact() {
-        return new Contact()
-                .email("ilankumaran@gmail.com")
-                .name("ILANKUMARAN ILANGOVAN")
-                .url("https://www.google.com");
-    }
-
-    private License getLicense() {
-        return new License()
-                .name("ILAN License")
-                .url("https://choosealicense.com/licenses/mit/");
-    }
 
     public List<Server> getServers() {
         return springDocUrl
