@@ -6,5 +6,8 @@
 ### QueryDsl Qclass generation maven plugin
 [click here](doc/QueryDsl_Maven_Plugin.md)
 
+### Specification _Entity class generation maven plugin
+[click here](doc/Specification_Maven_plugin.md)
+
 
 # Open API configuration
