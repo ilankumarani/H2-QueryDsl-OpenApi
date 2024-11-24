@@ -20,6 +20,7 @@
     </modules>
     <properties>
         <java.version>21</java.version>
+        <spring-boot-maven.skip>true</spring-boot-maven.skip>
         <app.profiles/>
         <start-class/>
 
@@ -304,9 +305,10 @@
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
                     <configuration>
+                        <skip>${spring-boot-maven.skip}</skip>
                         <excludeDevtools>true</excludeDevtools>
                         <profiles>${app.profiles}</profiles>
-                        <jvmArguments>-DCONFIG_ENVIRONMENT=functionaltest</jvmArguments>
+                        <jvmArguments>-Dserver.port=${random.int(5050,6060)}</jvmArguments>
                         <mainClass>${start-class}</mainClass>
                     </configuration>
                     <executions>
