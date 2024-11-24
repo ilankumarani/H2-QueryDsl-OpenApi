@@ -21,6 +21,7 @@
     <properties>
         <java.version>21</java.version>
         <spring-boot-maven.skip>true</spring-boot-maven.skip>
+        <jvm.args>-Dserver.port=${random.int(5050,6060)}</jvm.args>
         <app.profiles/>
         <start-class/>
 
@@ -308,7 +309,7 @@
                         <skip>${spring-boot-maven.skip}</skip>
                         <excludeDevtools>true</excludeDevtools>
                         <profiles>${app.profiles}</profiles>
-                        <jvmArguments>-Dserver.port=${random.int(5050,6060)}</jvmArguments>
+                        <jvmArguments>${jvm.args}</jvmArguments>
                         <mainClass>${start-class}</mainClass>
                     </configuration>
                     <executions>
