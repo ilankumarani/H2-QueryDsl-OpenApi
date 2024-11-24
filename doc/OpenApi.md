@@ -55,7 +55,7 @@ OpenApiCustomizer openApiCustomizer = openAPI -> {
 };
 ```
 
-#### NO JWT Authentication for all API's in the Application, then create below bean as such
+#### without JWT Authentication for all API's in the Application, then create below bean as such
 
 ```java
 @Bean
