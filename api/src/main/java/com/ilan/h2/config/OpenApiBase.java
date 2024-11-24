@@ -52,7 +52,7 @@ public abstract class OpenApiBase {
     @Bean
     public OpenAPI myOpenAPI() {
         return new OpenAPI()
-                .info(this.getInfo())
+                .info(getInfo())
                 .servers(getServers());
     }
 

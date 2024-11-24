@@ -53,16 +53,6 @@ OpenApiCustomizer openApiCustomizer = openAPI -> {
             .info(getInfo());
 
 };
-
-public Info getInfo() {
-    return new Info()
-            .title("H2 and Query DSL")
-            .version("1.0")
-            .contact(this.getContact())
-            .description("This API exposes endpoints to manage tutorials.")
-            .termsOfService("https://www.google.com/terms")
-            .license(this.getLicense());
-}
 ```
 
 #### NO JWT Authentication for all API's in the Application, then create below bean as such
@@ -71,7 +61,7 @@ public Info getInfo() {
 @Bean
 public OpenAPI myOpenAPI() {
     return new OpenAPI()
-            .info(this.getInfo())
+            .info(getInfo())
             .servers(getServers());
 }
 ```
