@@ -5,7 +5,7 @@
 public OpenAPI customizeOpenAPI() {
     final String securitySchemeName = "bearerAuth";
     return new OpenAPI()
-            .info(getInfo())
+            .info(this.getInfo())
             .servers(getServers())
             .addSecurityItem(new SecurityRequirement()
                     .addList(securitySchemeName))
@@ -50,7 +50,7 @@ OpenApiCustomizer openApiCustomizer = openAPI -> {
                             .type(SecurityScheme.Type.HTTP)
                             .scheme("bearer")
                             .bearerFormat("JWT")))
-            .info(getInfo());
+            .info(this.getInfo());
 
 };
 ```
@@ -61,7 +61,7 @@ OpenApiCustomizer openApiCustomizer = openAPI -> {
 @Bean
 public OpenAPI myOpenAPI() {
     return new OpenAPI()
-            .info(getInfo())
+            .info(this.getInfo())
             .servers(getServers());
 }
 ```

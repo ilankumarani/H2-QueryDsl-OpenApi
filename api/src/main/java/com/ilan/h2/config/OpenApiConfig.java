@@ -70,7 +70,7 @@ public class OpenApiConfig extends OpenApiBase{
                                 .type(SecurityScheme.Type.HTTP)
                                 .scheme("bearer")
                                 .bearerFormat("JWT")))
-                .info(getInfo());
+                .info(this.getInfo());
 
     };
 
