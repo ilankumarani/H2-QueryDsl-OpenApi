@@ -323,12 +323,13 @@
 
                         <execution>
                             <id>generate-sql</id>
+                            <phase>generate-sources</phase>
                             <goals>
                                 <goal>run</goal>
                             </goals>
                             <configuration>
                                 <skip>${generate-sql.skip}</skip>
-                                <mainClass>co.ilan.GenerateSqlDslApplication</mainClass>
+                                <mainClass>com.ilan.GenerateSqlDslApplication</mainClass>
                                 <jvmArguments>${sql.vm.args}</jvmArguments>
                             </configuration>
                         </execution>

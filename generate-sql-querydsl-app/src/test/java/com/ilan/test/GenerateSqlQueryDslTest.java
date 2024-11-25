@@ -1,4 +1,4 @@
-package test;
+package com.ilan.test;
 
 import com.ilan.GenerateSqlDslApplication;
 import com.ilan.config.DbConfig;
@@ -14,7 +14,7 @@ import org.springframework.test.context.ActiveProfiles;
 @Import({DbConfig.class})
 @RequiredArgsConstructor(onConstructor_ = @__(@Autowired))
 @ActiveProfiles("test")
-@DisplayName("EntityManager bean is created by DEVELOPER")
+@DisplayName("Single package-scan for entities")
 public class GenerateSqlQueryDslTest {
 
 

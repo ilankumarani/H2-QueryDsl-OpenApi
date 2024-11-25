@@ -16,9 +16,9 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <generate-sql.skip>true</generate-sql.skip>
+        <generate-sql.skip>false</generate-sql.skip>
         <sql.vm.args>
-            -Djpa.entities.base-package=io.ilan.entity
+            -Djpa.entities.base-package=com.ilan.h2.entity
             -DsqlqueryDsl.generate.directory=generated-sources
             -DsqlqueryDsl.package.directory=com.querydsl.sql
         </sql.vm.args>
