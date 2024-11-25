@@ -1,0 +1,5 @@
+spring:
+  jpa:
+    defer-datasource-initialization: false
+    hibernate:
+        ddl-auto: create-drop

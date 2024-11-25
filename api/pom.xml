@@ -15,9 +15,13 @@
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spring-boot-maven.skip>false</spring-boot-maven.skip>
-        <app.profiles>create</app.profiles>
+
         <start-class>com.ilan.h2.H2Application</start-class>
+        <app.profiles>create</app.profiles>
+        <spring-boot-maven.skip>false</spring-boot-maven.skip>
+        <spring-boot-maven.run.skip>true</spring-boot-maven.run.skip>
+        <spring-boot-maven.start.skip>false</spring-boot-maven.start.skip>
+        <spring-boot-maven.stop.skip>false</spring-boot-maven.stop.skip>
     </properties>
 
     <dependencies>
@@ -163,7 +167,7 @@
                 <artifactId>jacoco-maven-plugin</artifactId>
             </plugin>
 
-            <!--<plugin>
+            <plugin>
                 <groupId>org.liquibase</groupId>
                 <artifactId>liquibase-maven-plugin</artifactId>
                 <version>${liquibase.version}</version>
@@ -186,7 +190,7 @@
                         <version>${project.version}</version>
                     </dependency>
                 </dependencies>
-            </plugin>-->
+            </plugin>
 
             <plugin>
                 <groupId>org.springframework.boot</groupId>
