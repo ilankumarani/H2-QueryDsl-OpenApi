@@ -9,14 +9,14 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>stand-alone-app</artifactId>
+    <artifactId>generate-sql-querydsl-app</artifactId>
 
     <properties>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <start-class>com.ilan.MainConsoleApplication</start-class>
+        <start-class>com.ilan.GenerateSqlDslApplication</start-class>
         <app.profiles>create</app.profiles>
         <spring-boot-maven.skip>true</spring-boot-maven.skip>
         <spring-boot-maven.run.skip>false</spring-boot-maven.run.skip>

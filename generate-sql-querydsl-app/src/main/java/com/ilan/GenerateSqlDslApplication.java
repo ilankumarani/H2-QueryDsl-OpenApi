@@ -7,9 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 @Slf4j
-public class MainConsoleApplication {
+public class GenerateSqlDslApplication {
     public static void main(String[] args) {
-        SpringApplication app = new SpringApplication(MainConsoleApplication.class);
+        SpringApplication app = new SpringApplication(GenerateSqlDslApplication.class);
         app.setBannerMode(Banner.Mode.LOG);
         app.run(args);
         log.info("########## COMPLETED ##########");
