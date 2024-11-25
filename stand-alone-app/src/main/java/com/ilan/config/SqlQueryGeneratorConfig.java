@@ -23,10 +23,11 @@ import java.nio.file.Paths;
 public class SqlQueryGeneratorConfig {
 
 
-    @Value("${sql.queryDsl.generate.directory}")
+    @Value("${sql.queryDsl.generate.directory:}")
     private String generateDirectory;
 
-    @Value("${sql.queryDsl.package.directory}")
+
+    @Value("${sql.queryDsl.package.directory:}")
     private String packageDirectory;
 
     @Bean
