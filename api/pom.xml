@@ -18,6 +18,12 @@
 
         <start-class>com.ilan.h2.H2Application</start-class>
         <app.profiles>create</app.profiles>
+        <jvm.args>
+            -Dserver.port=${random.int(5050,6060)}
+            -Dspring.jpa.properties.hibernate.generate_statistics=false
+            -Dspring.jpa.properties.hibernate.format_sql=false
+            -Dspring.jpa.properties.hibernate.show-sql=false
+        </jvm.args>
         <spring-boot-maven.skip>false</spring-boot-maven.skip>
         <spring-boot-maven.run.skip>true</spring-boot-maven.run.skip>
         <spring-boot-maven.start.skip>false</spring-boot-maven.start.skip>
