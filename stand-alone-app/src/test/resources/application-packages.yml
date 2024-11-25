@@ -6,9 +6,9 @@ spring:
 
 jpa:
   entities:
-    base-package: io.ilan.entity
+    base-package: io.ilan.entity, org.ilan.entity
   repositories:
-    base-package: io.ilan.repository
+    base-package: io.ilan.repository, org.ilan.repository
 
 sql:
   queryDsl:
