@@ -16,13 +16,6 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <generate-sql.skip>false</generate-sql.skip>
-        <sql.vm.args>
-            -Djpa.entities.base-package=com.ilan.h2.entity
-            -DsqlqueryDsl.generate.directory=generated-sources
-            -DsqlqueryDsl.package.directory=com.querydsl.sql
-        </sql.vm.args>
-
         <start-class>com.ilan.h2.H2Application</start-class>
         <app.profiles>create</app.profiles>
         <jvm.args>
@@ -32,7 +25,6 @@
             -Dspring.jpa.properties.hibernate.show-sql=false
         </jvm.args>
         <spring-boot-maven.skip>false</spring-boot-maven.skip>
-        <spring-boot-maven.run.skip>true</spring-boot-maven.run.skip>
         <spring-boot-maven.start.skip>false</spring-boot-maven.start.skip>
         <spring-boot-maven.stop.skip>false</spring-boot-maven.stop.skip>
     </properties>
@@ -163,6 +155,45 @@
 
     <build>
         <plugins>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>${exec-maven-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>generate-sql-query-dsl</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <mainClass>com.ilan.GenerateSqlDslApplication</mainClass>
+                    <!--<arguments>
+                        &lt;!&ndash; Program arguments go here&ndash;&gt;
+                        <argument>spring.datasource.url=jdbc:h2:mem:queryDslSql;INIT=RUNSCRIPT FROM 'classpath:h2/schema.sql'</argument>
+                        <argument>jpa.entities.base-package=com.ilan.h2.entity</argument>
+                        <argument>sqlqueryDsl.generate.directory=generated-sources</argument>
+                        <argument>sqlqueryDsl.package.directory=com.querydsl.sql</argument>
+                    </arguments>-->
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.ilan</groupId>
+                        <artifactId>naming-strategy</artifactId>
+                        <version>${project.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>com.ilan</groupId>
+                        <artifactId>generate-sql-querydsl-app</artifactId>
+                        <version>${project.version}</version>
+                    </dependency>
+
+                </dependencies>
+            </plugin>
+
             <plugin>
                 <groupId>com.mysema.maven</groupId>
                 <artifactId>apt-maven-plugin</artifactId>

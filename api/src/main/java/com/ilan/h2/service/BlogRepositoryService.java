@@ -22,7 +22,7 @@ import javax.sql.DataSource;
 import java.util.List;
 
 import static com.ilan.h2.entity.QBlog.blog;
-import static com.querydsl.sql.generated.blog_schema.SBlogDetails.blogDetails;
+//import static com.querydsl.sql.generated.blog_schema.SBlogDetails.blogDetails;
 
 @Service
 @RequiredArgsConstructor
@@ -54,7 +54,7 @@ public class BlogRepositoryService {
 
 
 
-    @Transactional
+    /*@Transactional
     @Description("Sql QueryDSL example")
     public List<Blog> sqlFindBlogByTitle(String title) {
         BooleanExpression booleanExpression = blogDetails.title.eq(title);
@@ -66,7 +66,7 @@ public class BlogRepositoryService {
                 .from(blogDetails)
                 .where(booleanExpression)
                 .fetch();
-    }
+    }*/
 
     public List<Blog> findBlogByTitleJdbcTemplate(String title) {
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);

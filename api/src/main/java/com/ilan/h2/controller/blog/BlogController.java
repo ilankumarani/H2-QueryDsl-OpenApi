@@ -21,10 +21,10 @@ public class BlogController {
         return blogRepository.findBlogByTitle(title);
     }
 
-    @GetMapping(value = "/sql/queryDsl/findBlogByTitle/{title}")
+   /* @GetMapping(value = "/sql/queryDsl/findBlogByTitle/{title}")
     public List<Blog> sqlFindBlogByTitle(@Parameter(description = "titleName", required = true, example="Snow") @PathVariable(value = "title") String title) {
         return blogRepository.sqlFindBlogByTitle(title);
-    }
+    }*/
 
     @GetMapping(value = "/jdbcTemplate/findBlogByTitle/{title}")
     public List<Blog> jdbcTemplate(@Parameter(description = "titleName", required = true, example="Snow") @PathVariable(value = "title") String title) {

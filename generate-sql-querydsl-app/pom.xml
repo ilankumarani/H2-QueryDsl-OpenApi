@@ -18,10 +18,7 @@
 
         <start-class>com.ilan.GenerateSqlDslApplication</start-class>
         <app.profiles>create</app.profiles>
-        <spring-boot-maven.skip>true</spring-boot-maven.skip>
         <spring-boot-maven.run.skip>false</spring-boot-maven.run.skip>
-        <spring-boot-maven.start.skip>true</spring-boot-maven.start.skip>
-        <spring-boot-maven.stop.skip>true</spring-boot-maven.stop.skip>
     </properties>
 
     <dependencies>
@@ -30,6 +27,7 @@
             <groupId>com.ilan</groupId>
             <artifactId>naming-strategy</artifactId>
             <version>${project.version}</version>
+            <scope>test</scope>
         </dependency>
 
         <dependency>
