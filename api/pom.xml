@@ -120,8 +120,8 @@
         </dependency>
 
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
             <version>${mysql-connector-java.version}</version>
         </dependency>
 
@@ -151,15 +151,37 @@
         </dependency>
 
 
+        <dependency>
+            <groupId>com.ilan</groupId>
+            <artifactId>generate-sql-querydsl-app</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
         <plugins>
 
-            <plugin>
+            <!--<plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>${exec-maven-plugin.version}</version>
+                <configuration>
+                    <mainClass>org.ilan.GenerateSqlDslApplication</mainClass>
+                    <classpathScope>compile</classpathScope>
+                    <executableDependency>
+                        <groupId>com.ilan</groupId>
+                        <artifactId>generate-sql-querydsl-app</artifactId>
+                    </executableDependency>
+                    <includePluginDependencies>true</includePluginDependencies>
+                    <includeProjectDependencies>true</includeProjectDependencies>
+                    <arguments>
+                        &lt;!&ndash; Program arguments go here&ndash;&gt;
+                        <argument>spring.datasource.url=jdbc:h2:mem:queryDslSql;INIT=RUNSCRIPT FROM 'classpath:h2/schema.sql'</argument>
+                        <argument>jpa.entities.base-package=com.ilan.h2.entity</argument>
+                        <argument>sqlqueryDsl.generate.directory=generated-sources</argument>
+                        <argument>sqlqueryDsl.package.directory=com.querydsl.sql</argument>
+                    </arguments>
+                </configuration>
                 <executions>
                     <execution>
                         <id>generate-sql-query-dsl</id>
@@ -169,16 +191,6 @@
                         </goals>
                     </execution>
                 </executions>
-                <configuration>
-                    <mainClass>com.ilan.GenerateSqlDslApplication</mainClass>
-                    <!--<arguments>
-                        &lt;!&ndash; Program arguments go here&ndash;&gt;
-                        <argument>spring.datasource.url=jdbc:h2:mem:queryDslSql;INIT=RUNSCRIPT FROM 'classpath:h2/schema.sql'</argument>
-                        <argument>jpa.entities.base-package=com.ilan.h2.entity</argument>
-                        <argument>sqlqueryDsl.generate.directory=generated-sources</argument>
-                        <argument>sqlqueryDsl.package.directory=com.querydsl.sql</argument>
-                    </arguments>-->
-                </configuration>
                 <dependencies>
                     <dependency>
                         <groupId>com.ilan</groupId>
@@ -189,10 +201,10 @@
                         <groupId>com.ilan</groupId>
                         <artifactId>generate-sql-querydsl-app</artifactId>
                         <version>${project.version}</version>
+                        <type>jar</type>
                     </dependency>
-
                 </dependencies>
-            </plugin>
+            </plugin>-->
 
             <plugin>
                 <groupId>com.mysema.maven</groupId>
@@ -211,7 +223,7 @@
                 <artifactId>jacoco-maven-plugin</artifactId>
             </plugin>
 
-            <plugin>
+            <!--<plugin>
                 <groupId>org.liquibase</groupId>
                 <artifactId>liquibase-maven-plugin</artifactId>
                 <version>${liquibase.version}</version>
@@ -234,7 +246,7 @@
                         <version>${project.version}</version>
                     </dependency>
                 </dependencies>
-            </plugin>
+            </plugin>-->
 
             <plugin>
                 <groupId>org.springframework.boot</groupId>
