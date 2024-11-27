@@ -166,6 +166,7 @@
                 <groupId>com.mysema.maven</groupId>
                 <artifactId>apt-maven-plugin</artifactId>
             </plugin>
+
             <plugin>
                 <groupId>org.bsc.maven</groupId>
                 <artifactId>maven-processor-plugin</artifactId>
@@ -176,7 +177,7 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>${exec-maven-plugin.version}</version>
                 <configuration>
-                    <mainClass>io.ilan.GenerateSqlDslApplication</mainClass>
+                    <mainClass>com.ilan.GenerateSqlDslApplication</mainClass>
                     <classpathScope>compile</classpathScope>
                     <executableDependency>
                         <groupId>com.ilan</groupId>
