@@ -125,10 +125,6 @@
                     <groupId>com.mysema.maven</groupId>
                     <artifactId>apt-maven-plugin</artifactId>
                     <version>${apt-maven-plugin.version}</version>
-                    <configuration>
-                        <processor>com.querydsl.apt.jpa.JPAAnnotationProcessor, lombok.launch.AnnotationProcessorHider$AnnotationProcessor</processor>
-                    </configuration>
-
                     <executions>
                         <execution>
                             <id>Qgenerate-source-entities</id>
@@ -138,7 +134,7 @@
                             </goals>
                             <configuration>
                                 <outputDirectory>${project.build.directory}/generated-sources</outputDirectory>
-                                <processor>com.querydsl.apt.jpa.JPAAnnotationProcessor</processor>
+                                <processor>com.querydsl.apt.jpa.JPAAnnotationProcessor,lombok.launch.AnnotationProcessorHider$AnnotationProcessor</processor>
                             </configuration>
                         </execution>
                         <execution>
