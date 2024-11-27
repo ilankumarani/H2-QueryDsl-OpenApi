@@ -161,12 +161,22 @@
     <build>
         <plugins>
 
-            <!--<plugin>
+
+            <plugin>
+                <groupId>com.mysema.maven</groupId>
+                <artifactId>apt-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.bsc.maven</groupId>
+                <artifactId>maven-processor-plugin</artifactId>
+            </plugin>
+
+            <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>${exec-maven-plugin.version}</version>
                 <configuration>
-                    <mainClass>org.ilan.GenerateSqlDslApplication</mainClass>
+                    <mainClass>io.ilan.GenerateSqlDslApplication</mainClass>
                     <classpathScope>compile</classpathScope>
                     <executableDependency>
                         <groupId>com.ilan</groupId>
@@ -175,8 +185,10 @@
                     <includePluginDependencies>true</includePluginDependencies>
                     <includeProjectDependencies>true</includeProjectDependencies>
                     <arguments>
-                        &lt;!&ndash; Program arguments go here&ndash;&gt;
-                        <argument>spring.datasource.url=jdbc:h2:mem:queryDslSql;INIT=RUNSCRIPT FROM 'classpath:h2/schema.sql'</argument>
+                        <!-- Program arguments go here-->
+                        <argument>spring.datasource.url=jdbc:h2:mem:queryDslSql;INIT=RUNSCRIPT FROM
+                            'classpath:h2/schema.sql'
+                        </argument>
                         <argument>jpa.entities.base-package=com.ilan.h2.entity</argument>
                         <argument>sqlqueryDsl.generate.directory=generated-sources</argument>
                         <argument>sqlqueryDsl.package.directory=com.querydsl.sql</argument>
@@ -204,16 +216,8 @@
                         <type>jar</type>
                     </dependency>
                 </dependencies>
-            </plugin>-->
+            </plugin>
 
-            <plugin>
-                <groupId>com.mysema.maven</groupId>
-                <artifactId>apt-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.bsc.maven</groupId>
-                <artifactId>maven-processor-plugin</artifactId>
-            </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>
