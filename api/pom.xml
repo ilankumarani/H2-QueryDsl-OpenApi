@@ -161,18 +161,7 @@
     <build>
         <plugins>
 
-
-            <plugin>
-                <groupId>com.mysema.maven</groupId>
-                <artifactId>apt-maven-plugin</artifactId>
-            </plugin>
-
-            <plugin>
-                <groupId>org.bsc.maven</groupId>
-                <artifactId>maven-processor-plugin</artifactId>
-            </plugin>
-
-            <plugin>
+            <!--<plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>${exec-maven-plugin.version}</version>
@@ -186,7 +175,7 @@
                     <includePluginDependencies>true</includePluginDependencies>
                     <includeProjectDependencies>true</includeProjectDependencies>
                     <arguments>
-                        <!-- Program arguments go here-->
+                        &lt;!&ndash; Program arguments go here&ndash;&gt;
                         <argument>spring.datasource.url=jdbc:h2:mem:queryDslSql;INIT=RUNSCRIPT FROM
                             'classpath:h2/schema.sql'
                         </argument>
@@ -217,16 +206,8 @@
                         <type>jar</type>
                     </dependency>
                 </dependencies>
-            </plugin>
+            </plugin>-->
 
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>build-helper-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.jacoco</groupId>
-                <artifactId>jacoco-maven-plugin</artifactId>
-            </plugin>
 
             <!--<plugin>
                 <groupId>org.liquibase</groupId>
