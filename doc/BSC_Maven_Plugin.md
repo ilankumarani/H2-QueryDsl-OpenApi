@@ -1,0 +1,78 @@
+#### Generating Qclass for entities
+
+```xml
+<plugin>
+    <groupId>org.bsc.maven</groupId>
+    <artifactId>maven-processor-plugin</artifactId>
+    <version>${maven-processor-plugin.version}</version>
+    <executions>
+        <execution>
+            <id>source-generate-_Q</id>
+            <goals>
+                <goal>process</goal>
+            </goals>
+            <phase>generate-sources</phase>
+            <configuration>
+                <!-- source output directory -->
+                <outputDirectory>${project.build.directory}/generated-sources</outputDirectory>
+                <processors>
+                    <!--<processor>org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor</processor>-->
+                    <processor>com.querydsl.apt.jpa.JPAAnnotationProcessor</processor>
+                    <processor>org.hibernate.processor.HibernateProcessor</processor>
+                    <processor>lombok.launch.AnnotationProcessorHider$AnnotationProcessor</processor>
+                </processors>
+            </configuration>
+        </execution>
+        <execution>
+            <id>testSource-generate-_Q</id>
+            <goals>
+                <goal>process-test</goal>
+            </goals>
+            <phase>generate-test-sources</phase>
+            <configuration>
+                <!-- source output directory -->
+                <outputDirectory>${project.build.directory}/generated-test-sources
+                </outputDirectory>
+                <processors>
+                    <!--<processor>org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor</processor>-->
+                    <processor>com.querydsl.apt.jpa.JPAAnnotationProcessor</processor>
+                    <processor>org.hibernate.processor.HibernateProcessor</processor>
+                    <processor>lombok.launch.AnnotationProcessorHider$AnnotationProcessor</processor>
+                </processors>
+            </configuration>
+        </execution>
+    </executions>
+    <dependencies>
+        <!--<dependency>
+            <groupId>org.hibernate.orm</groupId>
+            <artifactId>hibernate-processor</artifactId>
+            <version>${hibernate-proccesor.version}</version>
+        </dependency>-->
+        <dependency>
+            <groupId>org.hibernate.orm</groupId>
+            <artifactId>hibernate-jpamodelgen</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.openfeign.querydsl</groupId>
+            <artifactId>querydsl-core</artifactId>
+            <version>${openfeign.querydsl.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.openfeign.querydsl</groupId>
+            <artifactId>querydsl-jpa</artifactId>
+            <version>${openfeign.querydsl.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.openfeign.querydsl</groupId>
+            <artifactId>querydsl-apt</artifactId>
+            <version>${openfeign.querydsl.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
+    </dependencies>
+</plugin>
+```

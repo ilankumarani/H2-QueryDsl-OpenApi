@@ -7,10 +7,13 @@
 ### JPA properties
 [click here](doc/JPA_Properties.md)
 
-### QueryDsl Qclass generation maven plugin
+### BSC Plugin QueryDsl Qclass & SpecificationMetaModel generation
+[click here](doc/BSC_Maven_Plugin.md)
+
+### APT Plugin QueryDsl Qclass generation
 [click here](doc/QueryDsl_Maven_Plugin.md)
 
-### Specification _Entity class generation maven plugin
+### BSC plugin SpecificationMetaModel class generation
 [click here](doc/Specification_Maven_plugin.md)
 
 ### Open API configuration
