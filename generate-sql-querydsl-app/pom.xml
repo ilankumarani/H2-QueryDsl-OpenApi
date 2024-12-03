@@ -24,9 +24,9 @@
     <dependencies>
 
         <dependency>
-            <groupId>com.ilan</groupId>
-            <artifactId>naming-strategy</artifactId>
-            <version>${project.version}</version>
+            <groupId>io.github.ilankumarani</groupId>
+            <artifactId>naming-strategy-resolver</artifactId>
+            <version>0.1.0-Beta</version>
             <scope>test</scope>
         </dependency>
 

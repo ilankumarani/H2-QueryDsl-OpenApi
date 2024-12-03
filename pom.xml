@@ -15,7 +15,6 @@
     <name>h2-querydsl</name>
     <description>Demo project for using H2 DB</description>
     <modules>
-        <module>naming-strategy</module>
         <module>generate-sql-querydsl-app</module>
         <module>api</module>
     </modules>
