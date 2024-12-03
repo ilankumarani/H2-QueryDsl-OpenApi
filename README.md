@@ -18,3 +18,6 @@
 
 ### Open API configuration
 [click here](doc/OpenApi.md)
+
+#### StatementInspector
+[click here](doc/StatementInspector.md)
