@@ -66,5 +66,5 @@ springdoc:
 management:
     endpoints.web.exposure.include: openapi, swagger-ui
 
-
+spring.jpa.properties.hibernate.session_factory.statement_inspector: com.ilan.h2.config.JpaSqlStatementInspector
 

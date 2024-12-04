@@ -1,6 +1,3 @@
-#### Alter query at runtime and Collect queries for Assertion
-
-```java
 package com.ilan.h2.config;
 
 import org.hibernate.resource.jdbc.spi.StatementInspector;
@@ -34,11 +31,3 @@ public class JpaSqlStatementInspector implements StatementInspector {
         return collectQueries;
     }
 }
-
-
-```
-
-```yaml
-spring.jpa.properties.hibernate.session_factory.statement_inspector: com.ilan.h2.config.JpaSqlStatementInspector
-
-```

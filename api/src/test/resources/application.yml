@@ -1,3 +1,5 @@
+spring.jpa.properties.hibernate.session_factory.statement_inspector: com.ilan.h2.config.JpaSqlStatementInspector
+
 spring:
     liquibase:
         enabled: false
