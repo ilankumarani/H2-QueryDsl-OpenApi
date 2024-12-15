@@ -134,7 +134,7 @@
         <dependency>
             <groupId>io.github.ilankumarani</groupId>
             <artifactId>naming-strategy-resolver</artifactId>
-            <version>0.1.0-Beta</version>
+            <version>${naming-strategy-resolver.version}</version>
         </dependency>
 
         <dependency>
