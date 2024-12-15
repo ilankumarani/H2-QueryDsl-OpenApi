@@ -1,3 +1,4 @@
+/*
 package com.ilan.h2.repository;
 
 import com.ilan.h2.entity.Blog;
@@ -13,3 +14,4 @@ public interface BlogQueryDslRepository extends QuerydslJpaRepository<Blog, Long
     return selectFrom(QBlog.blog).where(QBlog.blog.title.eq(title)).fetchOne();
   }
 }
+*/
