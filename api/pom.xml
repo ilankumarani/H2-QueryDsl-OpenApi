@@ -82,6 +82,12 @@
             <groupId>io.github.openfeign.querydsl</groupId>
             <artifactId>querydsl-jpa</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>io.github.openfeign.querydsl</groupId>
+            <artifactId>querydsl-jpa-spring</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>io.github.openfeign.querydsl</groupId>
             <artifactId>querydsl-apt</artifactId>
@@ -91,25 +97,21 @@
         <dependency>
             <groupId>io.github.openfeign.querydsl</groupId>
             <artifactId>querydsl-sql</artifactId>
-            <version>${openfeign.querydsl.version}</version>
         </dependency>
 
         <dependency>
             <groupId>io.github.openfeign.querydsl</groupId>
             <artifactId>querydsl-sql-spring</artifactId>
-            <version>${openfeign.querydsl.version}</version>
         </dependency>
 
         <dependency>
             <groupId>io.github.openfeign.querydsl</groupId>
             <artifactId>querydsl-sql-json</artifactId>
-            <version>${openfeign.querydsl.version}</version>
         </dependency>
 
         <dependency>
             <groupId>io.github.openfeign.querydsl</groupId>
             <artifactId>querydsl-sql-codegen</artifactId>
-            <version>${openfeign.querydsl.version}</version>
         </dependency>
 
         <!-- DB Jars -->
@@ -134,7 +136,7 @@
         <dependency>
             <groupId>io.github.ilankumarani</groupId>
             <artifactId>naming-strategy-resolver</artifactId>
-            <version>0.1.0-Beta</version>
+            <version>${naming-strategy-resolver.version}</version>
         </dependency>
 
         <dependency>

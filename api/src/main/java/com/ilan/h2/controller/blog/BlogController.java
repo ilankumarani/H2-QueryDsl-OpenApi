@@ -2,6 +2,7 @@ package com.ilan.h2.controller.blog;
 
 import com.ilan.h2.entity.Blog;
 import com.ilan.h2.service.BlogRepositoryService;
+import com.ilan.h2.service.JpaEntityInformationService;
 import io.swagger.v3.oas.annotations.Parameter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +16,7 @@ import java.util.List;
 public class BlogController {
 
     private final BlogRepositoryService blogRepository;
+    private final JpaEntityInformationService jpaEntityInformationService;
 
     @GetMapping(value = "/queryDsl/findBlogByTitle/{title}")
     public List<Blog> findBlogByTitle(@Parameter(description = "titleName", required = true, example="Snow") @PathVariable(value = "title") String title) {
@@ -34,5 +36,10 @@ public class BlogController {
     @GetMapping(value = "/namedJdbcTemplate/findBlogByTitle/{title}")
     public List<Blog> namedJdbcTemplate(@Parameter(description = "titleName", required = true, example="Snow") @PathVariable(value = "title") String title) {
         return blogRepository.findBlogByTitleNamedParameterJdbcTemplate(title);
+    }
+
+    @GetMapping(value = "/entity/information")
+    public String getEntityInformation() {
+        return jpaEntityInformationService.entityName();
     }
 }
