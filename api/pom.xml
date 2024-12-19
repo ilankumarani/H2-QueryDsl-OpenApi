@@ -157,82 +157,19 @@
     <build>
         <plugins>
 
-            <!--<plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>${exec-maven-plugin.version}</version>
-                <configuration>
-                    <mainClass>com.ilan.GenerateSqlDslApplication</mainClass>
-                    <classpathScope>compile</classpathScope>
-                    <executableDependency>
-                        <groupId>com.ilan</groupId>
-                        <artifactId>generate-sql-querydsl-app</artifactId>
-                    </executableDependency>
-                    <includePluginDependencies>true</includePluginDependencies>
-                    <includeProjectDependencies>true</includeProjectDependencies>
-                    <arguments>
-                        &lt;!&ndash; Program arguments go here&ndash;&gt;
-                        <argument>spring.datasource.url=jdbc:h2:mem:queryDslSql;INIT=RUNSCRIPT FROM
-                            'classpath:h2/schema.sql'
-                        </argument>
-                        <argument>jpa.entities.base-package=com.ilan.h2.entity</argument>
-                        <argument>sqlqueryDsl.generate.directory=generated-sources</argument>
-                        <argument>sqlqueryDsl.package.directory=com.querydsl.sql</argument>
-                    </arguments>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>generate-sql-query-dsl</id>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>java</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <dependencies>
-                    <dependency>
-                        <groupId>com.ilan</groupId>
-                        <artifactId>naming-strategy</artifactId>
-                        <version>${project.version}</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>com.ilan</groupId>
-                        <artifactId>generate-sql-querydsl-app</artifactId>
-                        <version>${project.version}</version>
-                        <type>jar</type>
-                    </dependency>
-                </dependencies>
-            </plugin>-->
-
-
-            <!--<plugin>
-                <groupId>org.liquibase</groupId>
-                <artifactId>liquibase-maven-plugin</artifactId>
-                <version>${liquibase.version}</version>
-                <configuration>
-                    <propertyFile>src/main/resources/liquibase.properties</propertyFile>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>add-source</id>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>generateChangeLog</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <dependencies>
-                    <dependency>
-                        <groupId>com.ilan</groupId>
-                        <artifactId>naming-strategy</artifactId>
-                        <version>${project.version}</version>
-                    </dependency>
-                </dependencies>
-            </plugin>-->
-
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.ilan.h2.H2Application</mainClass>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
 
         </plugins>
