@@ -161,7 +161,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.ilan.h2.H2Application</mainClass>
+                    <mainClass>${start-class}</mainClass>
                 </configuration>
                 <executions>
                     <execution>
