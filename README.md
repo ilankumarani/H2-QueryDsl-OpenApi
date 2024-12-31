@@ -1,6 +1,9 @@
 ### Spring Server port properties
 [click here](doc/Server_Port_Properties.md)
 
+### H2 as in Command line
+[click here](doc/H2_CommandLine.md)
+
 ### H2 Configuration
 [click here](doc/H2_Properties.md)
 
