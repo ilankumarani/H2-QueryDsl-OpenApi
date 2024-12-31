@@ -9,6 +9,7 @@ java -cp h2*.jar org.h2.tools.Server
 java -cp h2*.jar org.h2.tools.Server -?
 ```
 
+#### Example to run in Windows
 ```shell
 java -cp C:\Users\ilank\.m2\repository\com\h2database\h2\2.3.232\h2-2.3.232.jar org.h2.tools.Server -web -webAllowOthers -ifNotExists -tcp -tcpAllowOthers -webPort 8090 -baseDir C:\ILAN\WorkSpace\Java
 ```
