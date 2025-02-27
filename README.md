@@ -22,5 +22,10 @@
 ### Open API configuration
 [click here](doc/OpenApi.md)
 
-#### StatementInspector
+### StatementInspector
 [click here](doc/StatementInspector.md)
+
+### Get DataBase type in Java Code
+```java
+String dataBaseType = dataSource.getConnection().getMetaData().getDatabaseProductName()
+```
