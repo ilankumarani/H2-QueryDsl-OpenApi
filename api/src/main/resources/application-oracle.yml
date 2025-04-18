@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:h2:mem:testdb;MODE=Oracle;INIT=RUNSCRIPT FROM 'classpath:h2/schema.sql'
+    url: jdbc:h2:mem:testDb;MODE=Oracle;INIT=RUNSCRIPT FROM 'classpath:h2/schema.sql'
   jpa:
     database-platform: org.hibernate.dialect.OracleDialect
     defer-datasource-initialization: true

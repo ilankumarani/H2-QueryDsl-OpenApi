@@ -37,7 +37,7 @@ spring:
     driverClassName: org.h2.Driver
     username: sa
     password: password
-    url: jdbc:h2:mem:testdb;MODE=MySQL;INIT=RUNSCRIPT FROM 'classpath:h2/schema.sql'
+    url: jdbc:h2:mem:testDb;MODE=MySQL;INIT=RUNSCRIPT FROM 'classpath:h2/schema.sql'
   jpa:
     database-platform: org.hibernate.dialect.MySQLDialect
     properties:
