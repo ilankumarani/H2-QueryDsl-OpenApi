@@ -8,6 +8,9 @@ spring:
   jpa:
     # Dialect will change with respective to Database
     database-platform: org.hibernate.dialect.OracleDialect
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.OracleDialect
 ```
 
 #### 1.1 Run Oracle syntax queries in H2
@@ -18,9 +21,12 @@ spring:
     driverClassName: org.h2.Driver
     username: sa
     password: password
-    url: jdbc:h2:mem:testdb;MODE=Oracle;INIT=RUNSCRIPT FROM 'classpath:h2/schema.sql'
+    url: jdbc:h2:mem:testDb;MODE=Oracle;INIT=RUNSCRIPT FROM 'classpath:h2/schema.sql'
   jpa:
-    database-platform: org.hibernate.dialect.OracleDialect
+    database-platform: org.hibernate.dialect.H2Dialect
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
 ```
 
 #### 1.2 Run MySql syntax queries in H2
@@ -34,5 +40,8 @@ spring:
     url: jdbc:h2:mem:testdb;MODE=MySQL;INIT=RUNSCRIPT FROM 'classpath:h2/schema.sql'
   jpa:
     database-platform: org.hibernate.dialect.MySQLDialect
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
 ```
 

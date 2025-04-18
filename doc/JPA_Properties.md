@@ -1,4 +1,18 @@
-#### 1.1 Allow Spring to create the table for us
+#### 1.1 Allow Spring to Schema for us
+```yaml
+spring:
+  jpa:
+    properties:
+      jakarta:
+        persistence:
+          create-database-schemas: true
+          schema-generation:
+            database:
+              action: create
+```
+
+
+#### 2.1 Allow Spring to create the table for us
 
 ```yaml
 spring:
@@ -8,7 +22,7 @@ spring:
       ddl-auto: create-drop
 ```
 
-#### 1.2 Disable the spring to create table and we do it manually
+#### 2.2 Disable the spring to create table and we do it manually
 
 ```yaml
 spring:
@@ -23,7 +37,7 @@ spring:
       data-locations: classpath*:h2/data*.sql
 ```
 
-#### 1.3 Logging to Bind sql parameter for query
+#### 2.3 Logging to Bind sql parameter for query
 
 ```yaml
 logging:
@@ -44,7 +58,7 @@ logging:
             StatementCreatorUtils: TRACE
 ```
 
-#### 1.4 Show static of query execution time
+#### 2.4 Show static of query execution time
 
 ```yaml
 spring:
@@ -54,7 +68,7 @@ spring:
         generate_statistics: true
 ```
 
-#### 1.4 Show slow running queries slow < 25 milliSec
+#### 2.5 Show slow running queries slow < 25 milliSec
 
 ```yaml
 spring:
@@ -67,7 +81,7 @@ spring:
               LOG_QUERIES_SLOWER_THAN_MS: 25
 ```
 
-#### 1.5 Select fetch size of JPA and Batch
+#### 2.6 Select fetch size of JPA and Batch
 
 ```yaml
 spring:
