@@ -21,6 +21,11 @@
                     <processor>org.hibernate.processor.HibernateProcessor</processor>
                     <processor>lombok.launch.AnnotationProcessorHider$AnnotationProcessor</processor>
                 </processors>
+                <additionalSourceDirectories>
+                    <additionalSourceDirectory>
+                        ${project.build.directory}/generated-sources
+                    </additionalSourceDirectory>
+                </additionalSourceDirectories>
             </configuration>
         </execution>
         <execution>
@@ -39,6 +44,11 @@
                     <processor>org.hibernate.processor.HibernateProcessor</processor>
                     <processor>lombok.launch.AnnotationProcessorHider$AnnotationProcessor</processor>
                 </processors>
+                <additionalSourceDirectories>
+                    <additionalSourceDirectory>
+                        ${project.build.directory}/generated-sources
+                    </additionalSourceDirectory>
+                </additionalSourceDirectories>
             </configuration>
         </execution>
     </executions>

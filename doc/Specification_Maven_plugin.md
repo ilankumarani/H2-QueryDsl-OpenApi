@@ -24,6 +24,11 @@
                     <!--<processor>org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor</processor>-->
                     <processor>org.hibernate.processor.HibernateProcessor</processor>
                 </processors>
+                <additionalSourceDirectories>
+                    <additionalSourceDirectory>
+                        ${project.build.directory}/generated-sources
+                    </additionalSourceDirectory>
+                </additionalSourceDirectories>
             </configuration>
         </execution>
 
@@ -44,6 +49,11 @@
                     <!--<processor>org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor</processor>-->
                     <processor>org.hibernate.processor.HibernateProcessor</processor>
                 </processors>
+                <additionalSourceDirectories>
+                    <additionalSourceDirectory>
+                        ${project.build.directory}/generated-sources
+                    </additionalSourceDirectory>
+                </additionalSourceDirectories>
             </configuration>
         </execution>
     </executions>
