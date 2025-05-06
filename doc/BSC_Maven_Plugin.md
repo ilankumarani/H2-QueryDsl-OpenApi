@@ -46,7 +46,7 @@
                 </processors>
                 <additionalSourceDirectories>
                     <additionalSourceDirectory>
-                        ${project.build.directory}/generated-sources
+                        ${project.build.directory}/generated-test-sources
                     </additionalSourceDirectory>
                 </additionalSourceDirectories>
             </configuration>
