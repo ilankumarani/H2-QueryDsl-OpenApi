@@ -189,6 +189,66 @@
             </plugin>
 
             <plugin>
+                <groupId>com.google.code.maven-replacer-plugin</groupId>
+<!--                <artifactId>maven-replacer-plugin</artifactId>-->
+<!--                <version>1.4.1</version>-->
+                <artifactId>replacer</artifactId>
+                <version>1.5.3</version>
+                <executions>
+                    <execution>
+                        <id>source-main</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>replace</goal>
+                        </goals>
+                        <configuration>
+                            <includes>
+                                <include>${project.build.directory}/generated-sources/**/*.java</include>
+                            </includes>
+                            <regex>true</regex>
+                            <regexFlags>
+                                <regexFlag>MULTILINE</regexFlag>
+                            </regexFlags>
+                            <replacements>
+                                <replacement>
+                                    <token>@Generated</token>
+                                    <value>@com.ilan.generated.Generated</value>
+                                </replacement>
+                                <replacement>
+                                    <token>com.querydsl.codegen.DefaultEntitySerializer</token>
+                                    <value>com.querydsl.sql.codegen.MetaDataSerializer</value>
+                                </replacement>
+                            </replacements>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>source-test</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>replace</goal>
+                        </goals>
+                        <configuration>
+                            <includes>
+                                <include>${project.build.directory}/generated-test-sources/com/**/*.java</include>
+                            </includes>
+                            <regex>true</regex>
+                            <regexFlags>
+                                <regexFlag>MULTILINE</regexFlag>
+                            </regexFlags>
+                            <replacements>
+                                <replacement>
+                                    <token>@Generated("com.querydsl.codegen.DefaultEntitySerializer")</token>
+                                    <value>@com.ilan.generated.Generated("com.querydsl.sql.codegen.MetaDataSerializer")</value>
+                                </replacement>
+                            </replacements>
+                        </configuration>
+                    </execution>
+
+                </executions>
+
+            </plugin>
+
+            <!--<plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
@@ -197,11 +257,11 @@
                 <executions>
                     <execution>
                         <goals>
-                            <goal>repackage</goal>
+                            <goal>build-info</goal>
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin>-->
 
         </plugins>
     </build>
