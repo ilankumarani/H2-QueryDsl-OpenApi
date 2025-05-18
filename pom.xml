@@ -144,6 +144,14 @@
         </dependencies>
     </dependencyManagement>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.ilan</groupId>
+            <artifactId>generated-annotation</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
 
     <build>
         <pluginManagement>
@@ -172,6 +180,7 @@
                                     <processor>com.querydsl.apt.jpa.JPAAnnotationProcessor</processor>
 <!--                                    <processor>org.hibernate.processor.HibernateProcessor</processor>-->
                                     <processor>lombok.launch.AnnotationProcessorHider$AnnotationProcessor</processor>
+                                    <processor>com.ilan.SQLAnnotationProcessor</processor>
                                 </processors>
                                 <additionalSourceDirectories>
                                     <additionalSourceDirectory>
@@ -195,6 +204,7 @@
                                     <processor>com.querydsl.apt.jpa.JPAAnnotationProcessor</processor>
 <!--                                    <processor>org.hibernate.processor.HibernateProcessor</processor>-->
                                     <processor>lombok.launch.AnnotationProcessorHider$AnnotationProcessor</processor>
+                                    <processor>com.ilan.SQLAnnotationProcessor</processor>
                                 </processors>
                                 <additionalSourceDirectories>
                                     <additionalSourceDirectory>
@@ -234,6 +244,11 @@
                             <groupId>org.projectlombok</groupId>
                             <artifactId>lombok</artifactId>
                             <version>${lombok.version}</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>com.ilan</groupId>
+                            <artifactId>annotation-processor</artifactId>
+                            <version>1.0-SNAPSHOT</version>
                         </dependency>
                     </dependencies>
                 </plugin>
