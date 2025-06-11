@@ -320,21 +320,21 @@
                     </configuration>
                 </plugin>
 
-                <plugin>
+                <!--<plugin>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
-                    <!-- setting Configuration globally for all executions -->
-                    <!--<configuration>
+                    &lt;!&ndash; setting Configuration globally for all executions &ndash;&gt;
+                    <configuration>
                         <skip>${spring-boot-maven.skip}</skip>
                         <excludeDevtools>true</excludeDevtools>
                         <profiles>${app.profiles}</profiles>
                         <jvmArguments>${jvm.args}</jvmArguments>
                         <mainClass>${start-class}</mainClass>
-                    </configuration>-->
+                    </configuration>
                     <executions>
 
                         <execution>
-                            <id>run-application</id>
+                            <id>ilan-boot-maven-plugin-run</id>
                             <goals>
                                 <goal>run</goal>
                             </goals>
@@ -347,12 +347,12 @@
                         </execution>
 
                         <execution>
-                            <id>start-service</id>
+                            <id>ilan-boot-maven-plugin-start</id>
                             <phase>pre-integration-test</phase>
                             <goals>
                                 <goal>start</goal>
                             </goals>
-                            <!-- setting Configuration for each execution -->
+                            &lt;!&ndash; setting Configuration for each execution &ndash;&gt;
                             <configuration>
                                 <skip>${spring-boot-maven.start.skip}</skip>
                                 <mainClass>${start-class}</mainClass>
@@ -361,18 +361,18 @@
                             </configuration>
                         </execution>
                         <execution>
-                            <id>stop-service</id>
+                            <id>ilan-boot-maven-plugin-stop</id>
                             <phase>post-integration-test</phase>
                             <goals>
                                 <goal>stop</goal>
                             </goals>
-                            <!-- setting Configuration for each execution -->
+                            &lt;!&ndash; setting Configuration for each execution &ndash;&gt;
                             <configuration>
                                 <skip>${spring-boot-maven.stop.skip}</skip>
                             </configuration>
                         </execution>
                     </executions>
-                </plugin>
+                </plugin>-->
 
             </plugins>
         </pluginManagement>
