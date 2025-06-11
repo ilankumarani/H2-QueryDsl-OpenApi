@@ -22,7 +22,7 @@ spring:
     include: aws,eks
 ```
 
-#### 1.3 Random port in a custom predefined range
+#### 1.3 Separate properties base on profile in application-dev.yml
 
 ```yaml
 ---
