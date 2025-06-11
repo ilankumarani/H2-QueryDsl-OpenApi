@@ -13,6 +13,11 @@ spring:
     defer-datasource-initialization: true
     hibernate:
       ddl-auto: none
+      dialect: org.hibernate.dialect.MySQLDialect
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: none
   sql:
     init:
       mode: always
@@ -32,6 +37,11 @@ spring:
     defer-datasource-initialization: true
     hibernate:
       ddl-auto: none
+      dialect: org.hibernate.dialect.OracleDialect
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: none
   sql:
     init:
       mode: always
