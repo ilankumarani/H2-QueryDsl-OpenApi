@@ -156,38 +156,17 @@
 
     <build>
         <plugins>
-
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>3.5.0</version>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.ilan.QueryDslSqlApplication</mainClass>
-                    <arguments>
-                        <argument>-Djpa.entities.base-package=com.ilan.h2.entity</argument>
-                        <argument>--query.dsl.sql.output.directory=${basedir}/target/generated-sources</argument>
-                    </arguments>
-                    <includePluginDependencies>true</includePluginDependencies>
-                    <includeProjectDependencies>true</includeProjectDependencies>
-                    <additionalClasspathElements>true</additionalClasspathElements>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                        </manifest>
+                    </archive>
                 </configuration>
-                <executions>
-                    <execution>
-                        <id>RunningJAR</id>
-                        <goals>
-                            <goal>java</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <dependencies>
-                    <dependency>
-                        <groupId>io.github.ilankumarani</groupId>
-                        <artifactId>code-generator-test</artifactId>
-                        <version>0.3.0</version>
-                    </dependency>
-                </dependencies>
             </plugin>
-
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
@@ -196,13 +175,19 @@
                 </configuration>
                 <executions>
                     <execution>
+                        <id>ilan-build-info</id>
+                        <goals>
+                            <goal>build-info</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>ilan-repackage</id>
                         <goals>
                             <goal>repackage</goal>
                         </goals>
                     </execution>
                 </executions>
             </plugin>
-
         </plugins>
     </build>
 
