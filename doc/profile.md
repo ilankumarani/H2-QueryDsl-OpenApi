@@ -1,3 +1,8 @@
+> **_NOTE:_**  Reference link.
+> 
+> https://docs.spring.io/spring-boot/reference/features/profiles.html
+> 
+
 #### 1.1 Auto append group of profiles when I use profile **local**
 
 ```yaml
