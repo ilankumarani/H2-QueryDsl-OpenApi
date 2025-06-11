@@ -8,7 +8,7 @@
 [click here](doc/H2_CommandLine.md)
 
 ### H2 Configuration on Dialect and driver properties respective to Database
-[click here](doc/H2_Properties.md)
+[click here](doc/H2_Dialect_Properties.md)
 
 ### JPA properties
 [click here](doc/JPA_Properties.md)
