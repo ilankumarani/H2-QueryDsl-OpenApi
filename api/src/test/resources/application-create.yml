@@ -5,6 +5,9 @@ spring:
     password: password
     url: jdbc:h2:mem:createDb;
   jpa:
+    hibernate:
+      naming:
+        physical-strategy: com.ilan.h2.config.namingStrategy.CustomPhysicalNamingStrategy
     show-sql: true
     defer-datasource-initialization: true
     database-platform: org.hibernate.dialect.H2Dialect
@@ -16,6 +19,7 @@ spring:
             database:
               action: create
       hibernate:
+        physical_naming_strategy: com.ilan.h2.config.namingStrategy.CustomPhysicalNamingStrategy
         enable_lazy_load_no_trans: true
         format_sql: true # To beautify or pretty print the SQL
         show-sql: true

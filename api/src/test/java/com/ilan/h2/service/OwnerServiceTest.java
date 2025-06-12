@@ -5,19 +5,17 @@ import com.ilan.h2.entity.Owner;
 import com.ilan.h2.repository.BlogRepository;
 import com.ilan.h2.repository.OwnerRepository;
 import lombok.RequiredArgsConstructor;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
 import java.util.Arrays;
-import java.util.List;
 
-import static org.assertj.core.api.FactoryBasedNavigableListAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
+@ActiveProfiles({"test"})
 @SpringBootTest(useMainMethod = SpringBootTest.UseMainMethod.ALWAYS
         , webEnvironment = SpringBootTest.WebEnvironment.NONE)
 @RequiredArgsConstructor(onConstructor_ = @__(@Autowired))

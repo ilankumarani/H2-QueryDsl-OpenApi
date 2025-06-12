@@ -4,19 +4,19 @@ import com.ilan.h2.entity.Blog;
 import com.ilan.h2.entity.Owner;
 import com.ilan.h2.repository.BlogRepository;
 import com.ilan.h2.repository.OwnerRepository;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
 import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
+@ActiveProfiles({"test"})
 @SpringBootTest(useMainMethod = SpringBootTest.UseMainMethod.ALWAYS
         , webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT
         , properties = "server.port=9090")
