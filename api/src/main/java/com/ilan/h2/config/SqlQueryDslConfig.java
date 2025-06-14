@@ -44,7 +44,7 @@ public class SqlQueryDslConfig {
 
     @Bean
     public SQLQueryFactory sqlQueryFactory(DataSource dataSource, com.querydsl.sql.Configuration configuration) {
-        var provider = new SpringConnectionProvider(dataSource);
+        SpringConnectionProvider provider = new SpringConnectionProvider(dataSource);
         return new SQLQueryFactory(querydslConfiguration(), provider);
     }
 
