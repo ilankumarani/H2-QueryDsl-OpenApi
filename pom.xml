@@ -29,7 +29,7 @@
 
         <mapstruct-processor>1.6.2</mapstruct-processor>
         <springdoc.version>2.6.0</springdoc.version>
-        <openfeign.querydsl.version>6.10.1</openfeign.querydsl.version>
+        <openfeign.querydsl.version>6.11</openfeign.querydsl.version>
         <mysql-connector-java.version>9.1.0</mysql-connector-java.version>
         <ojdbc10.version>19.22.0.0</ojdbc10.version>
         <hibernate-proccesor.version>7.0.0.Alpha3</hibernate-proccesor.version>
