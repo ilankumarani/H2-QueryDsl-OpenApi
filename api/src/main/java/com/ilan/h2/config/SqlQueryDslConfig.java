@@ -14,6 +14,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy;
 
 import javax.sql.DataSource;
 import java.io.File;
@@ -45,7 +46,8 @@ public class SqlQueryDslConfig {
     @Bean
     public SQLQueryFactory sqlQueryFactory(DataSource dataSource, com.querydsl.sql.Configuration configuration) {
         SpringConnectionProvider provider = new SpringConnectionProvider(dataSource);
-        return new SQLQueryFactory(querydslConfiguration(), provider);
+        //return new SQLQueryFactory(configuration, provider);
+        return new SQLQueryFactory(configuration, new TransactionAwareDataSourceProxy(dataSource));
     }
 
 
