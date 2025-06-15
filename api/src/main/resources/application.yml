@@ -72,3 +72,10 @@ management:
 
 spring.jpa.properties.hibernate.session_factory.statement_inspector: com.ilan.h2.config.JpaSqlStatementInspector
 
+
+# https://www.baeldung.com/yaml-multi-line
+ilan.key: |
+    ### Heading
+
+    * Bullet
+    * Points
