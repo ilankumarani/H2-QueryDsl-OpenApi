@@ -1,6 +1,4 @@
 spring:
-    liquibase:
-        enabled: false
     h2:
         console:
             enabled: true

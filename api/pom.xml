@@ -119,19 +119,6 @@
             <version>${ojdbc10.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.liquibase</groupId>
-            <artifactId>liquibase-core</artifactId>
-            <version>${liquibase.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.liquibase.ext</groupId>
-            <artifactId>liquibase-hibernate6</artifactId>
-            <version>${liquibase.version}</version>
-            <scope>runtime</scope>
-        </dependency>
-
     </dependencies>
 
     <build>

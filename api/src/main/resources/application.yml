@@ -28,8 +28,6 @@ spring:
             settings:
                 web-allow-others: true
                 trace: true
-    liquibase:
-        enabled: false
     datasource:
         driverClassName: org.h2.Driver
         username: sa

@@ -1,8 +1,6 @@
 spring.jpa.properties.hibernate.session_factory.statement_inspector: com.ilan.h2.config.JpaSqlStatementInspector
 
 spring:
-    liquibase:
-        enabled: false
     datasource:
         driverClassName: org.h2.Driver
         username: sa
