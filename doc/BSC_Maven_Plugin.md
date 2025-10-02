@@ -19,7 +19,6 @@
                     <!--<processor>org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor</processor>-->
                     <processor>com.querydsl.apt.jpa.JPAAnnotationProcessor</processor>
                     <processor>org.hibernate.processor.HibernateProcessor</processor>
-                    <processor>lombok.launch.AnnotationProcessorHider$AnnotationProcessor</processor>
                 </processors>
                 <additionalSourceDirectories>
                     <additionalSourceDirectory>
@@ -42,7 +41,7 @@
                     <!--<processor>org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor</processor>-->
                     <processor>com.querydsl.apt.jpa.JPAAnnotationProcessor</processor>
                     <processor>org.hibernate.processor.HibernateProcessor</processor>
-                    <processor>lombok.launch.AnnotationProcessorHider$AnnotationProcessor</processor>
+                    
                 </processors>
                 <additionalSourceDirectories>
                     <additionalSourceDirectory>

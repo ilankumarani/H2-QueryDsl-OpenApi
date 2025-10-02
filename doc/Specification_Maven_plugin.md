@@ -20,7 +20,6 @@
                 <!-- source output directory -->
                 <outputDirectory>${project.build.directory}/generated-sources</outputDirectory>
                 <processors>
-                    <processor>lombok.launch.AnnotationProcessorHider$AnnotationProcessor</processor>
                     <!--<processor>org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor</processor>-->
                     <processor>org.hibernate.processor.HibernateProcessor</processor>
                 </processors>
@@ -44,7 +43,7 @@
                 <outputDirectory>${project.build.directory}/generated-test-sources
                 </outputDirectory>
                 <processors>
-                    <processor>lombok.launch.AnnotationProcessorHider$AnnotationProcessor</processor>
+                    
                     <!-- Below Annotation processor is deprecated -->
                     <!--<processor>org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor</processor>-->
                     <processor>org.hibernate.processor.HibernateProcessor</processor>
