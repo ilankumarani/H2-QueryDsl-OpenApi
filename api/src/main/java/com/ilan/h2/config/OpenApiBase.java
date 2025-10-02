@@ -27,23 +27,26 @@ import static org.springdoc.core.utils.Constants.ALL_PATTERN;
 
 public abstract class OpenApiBase {
 
+    String BEARER = "bearer";
+    String JWT = "JWT";
+    final String BEARER_AUTH = "bearerAuth";
+
     // Creating this bean as below we are authenticating all API's
     @ConditionalOnProperty(prefix = "springdoc", name = "security.enabled", havingValue = "true", matchIfMissing = true)
     @Bean
     public OpenAPI customizeOpenAPI() {
-        final String securitySchemeName = "bearerAuth";
         return new OpenAPI()
                 .info(this.getInfo())
                 .servers(getServers())
                 .addSecurityItem(new SecurityRequirement()
-                        .addList(securitySchemeName))
+                        .addList(BEARER_AUTH))
                 .components(new Components()
-                        .addSecuritySchemes(securitySchemeName, new SecurityScheme()
-                                .name(securitySchemeName)
+                        .addSecuritySchemes(BEARER_AUTH, new SecurityScheme()
+                                .name(BEARER_AUTH)
                                 .in(SecurityScheme.In.HEADER)
                                 .type(SecurityScheme.Type.HTTP)
-                                .scheme("bearer")
-                                .bearerFormat("JWT")));
+                                .scheme(BEARER)
+                                .bearerFormat(JWT)));
     }
 
 

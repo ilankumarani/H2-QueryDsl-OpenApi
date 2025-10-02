@@ -58,18 +58,17 @@ public class OpenApiConfig extends OpenApiBase{
 
     //Here we are authenticating API's for OWNER group
     OpenApiCustomizer openApiCustomizer = openAPI -> {
-        final String securitySchemeName = "bearerAuth";
         openAPI
                 .servers(getServers())
                 .addSecurityItem(new SecurityRequirement()
-                        .addList(securitySchemeName))
+                        .addList(BEARER_AUTH))
                 .components(new Components()
-                        .addSecuritySchemes(securitySchemeName, new SecurityScheme()
-                                .name(securitySchemeName)
+                        .addSecuritySchemes(BEARER_AUTH, new SecurityScheme()
+                                .name(BEARER_AUTH)
                                 .in(SecurityScheme.In.HEADER)
                                 .type(SecurityScheme.Type.HTTP)
-                                .scheme("bearer")
-                                .bearerFormat("JWT")))
+                                .scheme(BEARER)
+                                .bearerFormat(JWT)))
                 .info(this.getInfo());
 
     };
