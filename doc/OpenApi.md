@@ -1,3 +1,16 @@
+
+
+#### OpenAPI doc configuration
+
+```yaml
+springdoc:
+  swagger-ui:
+    path: '/swagger-ui.html'
+  api-docs:
+    path: '/v3/api-docs'
+    enabled: true
+```
+
 #### JWT Authentication for all API's in the Application, then create below bean as such
 
 ```java
