@@ -29,6 +29,7 @@
 [**Swagger ui**](http://localhost:8080/swagger-ui.html)
 
 [**Api api as YAML**](http://localhost:8080/v3/api-docs.yaml)
+
 [click here](doc/OpenApi.md)
 
 ### StatementInspector
