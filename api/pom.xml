@@ -81,23 +81,18 @@
 
         <dependency>
             <groupId>io.github.openfeign.querydsl</groupId>
-            <artifactId>querydsl-apt</artifactId>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>io.github.openfeign.querydsl</groupId>
             <artifactId>querydsl-sql-spring</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>io.github.openfeign.querydsl</groupId>
-            <artifactId>querydsl-sql-json</artifactId>
+            <version>${openfeign.querydsl.version}</version>
         </dependency>
 
         <dependency>
             <groupId>io.github.openfeign.querydsl</groupId>
             <artifactId>querydsl-sql-codegen</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.github.openfeign.querydsl</groupId>
+            <artifactId>querydsl-sql-json</artifactId>
         </dependency>
 
         <!-- DB Jars -->
